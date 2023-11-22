@@ -1,0 +1,116 @@
+<!-- End Side Vav -->
+<a class="close_side_menu" href="javascript:void(0);"></a>
+
+<div class="rbt-page-banner-wrapper">
+    <!-- Start Banner BG Image  -->
+    <div class="rbt-banner-image"></div>
+    <!-- End Banner BG Image  -->
+    <div class="rbt-banner-content">
+
+        <!-- Start Banner Content Top  -->
+        <div class="rbt-banner-content-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <!-- Start Breadcrumb Area  -->
+                        <ul class="page-list">
+                            <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li>
+                                <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                            </li>
+                            <!-- <li class="rbt-breadcrumb-item active">Portafolio: {{categoria.name}}</li> -->
+                        </ul>
+                        <!-- End Breadcrumb Area  -->
+
+                        <div class=" title-wrapper">
+                            <!-- <h1 class="title mb--0">Portafolio: {{categoria.name}}</h1> -->
+                            <div class="contenido ">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <ng-container  *ngFor="let category of categorias">
+                                        <li class="nav-item lista" role="presentation">
+                                            <button class="nav-link active"[routerLink]="['/portafolio/category/', category.id]" data-toggle="tab"  type="button" role="tab" aria-controls="home" aria-selected="true">{{category.name}}</button>
+                                        </li>
+                                    </ng-container>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+
+                        <!-- <p class="description">Blog that help beginner designers become true unicorns. </p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner Content Top  -->
+    </div>
+</div>
+
+<!-- Start Card Style -->
+<div class="rbt-blog-area rbt-section-overlayping-top rbt-section-gapBottom">
+    <div class="container">
+        
+        <div class="container mt-3 mb-20">
+            <!-- left-side -->
+            
+            <!-- end left-side -->
+        </div>
+    </div>
+</div>
+<!-- End Card Style -->
+
+<div class="rbt-separator-mid">
+    <div class="container">
+        <hr class="rbt-separator m-0">
+    </div>
+</div>
+
+
+
+
+
+<!-- <app-modalgrafico></app-modalgrafico> -->
+
+
+
+<div *ngFor="let portafolio of portafolios; let i = index">
+    <div class="modal fade" id="{{portafolio.popup}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="row dflex">
+                    <div class="col-xs-12 col-sm-5">
+                        <h3>{{portafolio.title}}</h3>
+                        <p [innerHTML]="portafolio.description | keepHtml"></p>
+                        <div *ngIf="portafolio.url != 'null'">
+                            <a [href]="portafolio.url" target="_blank" class="btn btn-outline-primary">visitar</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-7">
+                        <div *ngIf="!portafolio.imagen">
+                            <img src="./assets/images/no-image.jpg" alt="Malcolm Cordova Studio desing {{portafolio.title}}">
+                        </div>
+                        <div *ngIf="portafolio.imagen">
+                            <img src="{{imagenSerUrl}}{{portafolio.imagen}}"  alt="Malcolm Cordova Studio desing {{portafolio.title}}">
+                        </div>
+                        <div *ngIf="portafolio.youtubeurl != 'null'">
+                            <iframe class="embed-responsive-item shadow" width="100%" height="240" [src]="getVideoIframe(product.youtubeurl)" frameborder="0" allow="accelerometer; autoplay;  " allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+</div>
+<app-footer></app-footer>
+

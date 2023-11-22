@@ -1,0 +1,50 @@
+<!-- End Side Vav -->
+<a class="close_side_menu" href="javascript:void(0);"></a>
+
+<div class="rbt-overlay-page-wrapper">
+    <div class="breadcrumb-image-container breadcrumb-style-max-width">
+        <div class="breadcrumb-image-wrapper">
+            <img src="assets/images/bg/bg-image-10.jpg" alt="Education Images">
+        </div>
+        <div class="breadcrumb-content-top text-center">
+            <ul class="meta-list justify-content-center mb--10">
+                <!-- <li class="list-item">
+                    <div class="author-thumbnail">
+                        <img src="assets/images/testimonial/client-06.png" alt="blog-image">
+                    </div>
+                    <div class="author-info">
+                        <a href="#"><strong>Jone Song</strong></a> in <a href="#"><strong>Design</strong></a>
+                    </div>
+                </li> -->
+                <li class="list-item">
+                    <i class="feather-clock"></i>
+                    <span>{{blog.created_at | date}}</span>
+                </li>
+            </ul>
+            <h1 class="title">{{blog.title}}</h1>
+        </div>
+    </div>
+
+    <div class="rbt-blog-details-area rbt-section-gapBottom breadcrumb-style-max-width">
+        <div class="blog-content-wrapper rbt-article-content-wrapper">
+            <div class="content">
+                <div class="post-thumbnail mb--30 position-relative wp-block-image alignwide">
+                    <figure>
+                        <img src="{{imagenSerUrl}}{{blog.imagen}}" [alt]="blog.title">
+                        <figcaption>{{blog.title}}</figcaption>
+                    </figure>
+
+                </div>
+                <!-- <blockquote class="wp-block-quote">
+                    <p>Only one thing is impossible for God: To find any sense in any copyright law on the planet.</p>
+                    <cite><a href="https://themeforest.net/user/rainbow-themes/portfolio">Mark Twain</a></cite>
+                </blockquote> -->
+                <div class="nomember" [innerHtml]="blog.description  "></div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

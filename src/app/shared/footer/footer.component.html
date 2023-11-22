@@ -1,0 +1,103 @@
+<footer class="rbt-footer footer-style-1">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row row--15 mt_dec--30">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
+                    <div class="footer-widget">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="assets/images/logo/logotipo.png" alt="Malcolm Cordova">
+                            </a>
+                        </div>
+
+                        <p class="description mt--20">Siempre en la busqueda de crear desarrollos con solo imaginar.
+                        </p>
+
+                        <div class="contact-btn mt--30">
+                            <a class="rbt-btn hover-icon-reverse btn-border-gradient radius-round" routerLink="/contact">
+                                <div class="icon-reverse-wrapper">
+                                    <span class="btn-text">Contactame</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
+                    <div class="footer-widget">
+                        <h5 class="ft-title">Portafolio</h5>
+                        <ul class="ft-link">
+                            <ng-container  *ngFor="let category of categorias">
+                                <li >
+                                    
+                                    <a [routerLink]="['/portafolio/category/', category.id]">{{category.name}}</a>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </div>
+<!-- 
+                <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
+                    <div class="footer-widget">
+                        <h5 class="ft-title">Our Company</h5>
+                        <ul class="ft-link">
+                            <li>
+                                <a routerLink="/contact">Contact Us</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                    <div class="footer-widget">
+                        <h5 class="ft-title">Get Contact</h5>
+                        <ul class="ft-link">
+                            <li><span>Phone:</span> <a href="tel:+584241874370" target="_blank">(+58)424-187.43.70</a></li>
+                            <li><span>Whatsapp:</span> <a href="https://wa.me/584241874370" target="_blank">(+58)424-187.43.70</a></li>
+                           
+                            <!-- <li><span>E-mail:</span> <a href="mailto: mercadocreativo@gmail.com">mercadocreativo@gmail.com</a></li> -->
+                            <li><span>Location:</span> Caracas, Venezuela</li>
+                        </ul>
+                        <ul class="social-icon social-default icon-naked justify-content-start mt--20">
+                            <li>
+                                <a href="https://facebook.com/@malcolmcordova"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <!-- <li>
+                                <a href="https://intagram.com/@malcolmcordova"><i class="fab fa-twitter"></i></a>
+                            </li> -->
+                            <li>
+                                <a href="https://linkedin.com/@malcolmcordova"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com/@malcolmcordova"><i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!---menu movil footer-->
+<div class="navbarM ">
+    <a routerLink="/">
+        <img src="./assets/svg/hogar.svg" alt="">
+        <p>Home</p>
+    </a>
+    <a routerLink="/soluciones-web" >
+        <img src="./assets/svg/prismaticos.svg" alt="">
+        <p>Soluciones</p>
+    </a>
+    <a routerLink="/portafolio-movil" >
+        <img src="./assets/svg/mundo.svg" alt="">
+        <p>portafolio</p>
+    </a>
+    <a routerLink="/acerca-de" >
+        <img src="./assets/svg/marcador.svg" alt="">
+        <p>Acerca de</p>
+    </a>
+</div>

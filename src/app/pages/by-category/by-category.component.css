@@ -1,0 +1,15 @@
+.col-sm-6 {
+    float: left;
+}
+
+.dflex{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dflex img{
+    display: flex;
+    margin: auto;
+}
+
