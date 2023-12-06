@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { CourseLessonComponent } from './course-lesson/course-lesson.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CourseLessonComponent } from './course-lesson/course-lesson.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    ComponentsModule
   ]
 })
 export class TiendaAuthModule { }

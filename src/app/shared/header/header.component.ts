@@ -8,6 +8,9 @@ import { CartService } from 'src/app/modules/tienda-guest/service/cart.service';
 import { TiendaGuestService } from 'src/app/modules/tienda-guest/service/tienda-guest.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { PortafolioService } from 'src/app/services/portafolio.service';
+import { environment } from 'src/environments/environment';
+import {TranslateService} from '@ngx-translate/core';
+
 
 declare function cartSidenav():any;
 declare function _clickDocTwo():any;
@@ -23,16 +26,25 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   listCarts: any = [];
   user:any = null;
+  usuario:any = null;
   totalSum:any = 0;
   
   search:any = null;
   source:any;
   listCourses: any = [];
+  listProducts: any = [];
   categories:any = [];
 
   categorias: any= [];
   postrecientes: any= Portafolio;
+  imagenSerUrl = environment.apiUrlMedia;
   
+  langs: string[] = [];
+  public activeLang = 'es';
+
+  flag = false;
+
+
   error: string;
 
   constructor(
@@ -42,14 +54,36 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private categoryService: CategoriaService,
     public router:Router,
     public tiendaGuestService: TiendaGuestService,
+    private translate: TranslateService
+  ) { 
+    // this.translate.setDefaultLang('es');
+    this.translate.setDefaultLang(this.activeLang);
+    this.translate.use('es');
+    this.translate.addLangs(["es", "en"]);
+    this.langs = this.translate.getLangs();
+    translate.get(this.langs).subscribe(res =>{
+      console.log(res);
+    })
+    // console.log(this.translate);
+  }
 
-  ) { }
+  // cambiarLang(lang:string){
+  //   this.translate.use(lang);
+
+  // }
+
+  public cambiarLenguaje(lang) {
+    this.activeLang = lang;
+    this.translate.use(lang);
+    this.flag = !this.flag;
+  }
+
 
   ngOnInit(): void {
     this.user = this.authService.user;
 
     this.cartService.currentData$.subscribe((resp:any)=>{
-      // console.log(resp);
+      console.log(resp);
       this.listCarts = resp;
       this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
     })
@@ -71,6 +105,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.listarOpciones();
     this.getCategories();
     this.closeMenu();
+    this.getUser();
+  }
+
+  getUser(): void {
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+    // console.log(this.usuario);
   }
 
   ngAfterViewInit(): void {
@@ -85,6 +125,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         this.tiendaGuestService.listCourses(data).subscribe((resp:any)=>{
           // console.log(resp);
           this.listCourses = resp.courses.data;
+          this.listProducts = resp.products.data;
         })
 
       }
@@ -107,6 +148,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   buscarCourses(){
+    // this.router.navigateByUrl("/tienda-guest/listado-de-cursos?search="+this.search);
+    window.location.href = "/tienda-guest/listado-de-cursos?search="+this.search;
+
+  }
+  buscarProducts(){
     // this.router.navigateByUrl("/tienda-guest/listado-de-cursos?search="+this.search);
     window.location.href = "/tienda-guest/listado-de-cursos?search="+this.search;
 
@@ -157,5 +203,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
       }
   }
+
+ 
 
 }

@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',component: TiendaAuthComponent,
     children:[
       {
-        path:'carrito-de-compra', component: ListCartComponent
+        path:'lista', component: ListCartComponent
       },
       {
         path:'perfil-del-cliente', component: ProfileClientComponent

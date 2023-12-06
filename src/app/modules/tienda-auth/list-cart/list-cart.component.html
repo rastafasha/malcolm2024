@@ -31,7 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Curso</th>
+                                        <th class="pro-title">Artículo</th>
                                         <th class="pro-price">Price</th>
                                         <th class="pro-quantity">Detalle</th>
                                         <th class="pro-subtotal">Total</th>
@@ -40,9 +40,9 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngFor="let cart of listCarts">
-                                        <tr>
-                                            <td class="pro-thumbnail"><a [href]="'/tienda-guest/landing-curso/'+cart.course.slug" target="_blank"><img [src]="cart.course.imagen" alt="Product"></a></td>
-                                            <td class="pro-title"><a [href]="'/tienda-guest/landing-curso/'+cart.course.slug" target="_blank">{{cart.course.title}}</a></td>
+                                        <tr *ngIf="cart.course">
+                                            <td class="pro-thumbnail"><a [href]="'/tienda-guest/landing-curso/'+cart.course.slug" target="_self"><img [src]="cart.course.imagen" alt="Product"></a></td>
+                                            <td class="pro-title"><a [href]="'/tienda-guest/landing-curso/'+cart.course.slug" target="_self">Curso: {{cart.course.title}}</a></td>
                                             <td class="pro-price"><span>{{cart.precio_unitario}} USD</span></td>
                                             <td class="pro-quantity">
                                                 <ng-container *ngIf="cart.code_cupon">
@@ -63,6 +63,34 @@
                                                         {{getNameCampaing(cart.type_campaing)}}
                                                     </small>
                                                 </ng-container>
+                                            </td>
+                                            <td class="pro-subtotal"><span>${{cart.total}}</span></td>
+                                            <td class="pro-remove"><a href="#" onclick="return false;" (click)="removeItem(cart)"><i class="feather-x"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="cart.product">
+                                            <td class="pro-thumbnail"><a [href]="'/tienda-guest/landing-product/'+cart.product.slug" target="_self"><img [src]="cart.product.imagen" alt="Product"></a></td>
+                                            <td class="pro-title"><a [href]="'/tienda-guest/landing-product/'+cart.product.slug" target="_self">Product: {{cart.product.title}}</a></td>
+                                            <td class="pro-price"><span>{{cart.precio_unitario}} USD</span></td>
+                                            <td class="pro-quantity">
+                                                <!-- <ng-container *ngIf="cart.code_cupon">
+                                                    <small *ngIf="cart.type_discount == 1"> Descuento: - {{cart.discount}} %</small>
+                                                    
+                                                    <small *ngIf="cart.type_discount == 2"> Descuento: - {{cart.discount}} usd</small>
+                                                    <br>
+                                                    <small > CODIGO: {{cart.code_cupon}}</small>
+                                                </ng-container>
+                                                <ng-container *ngIf="cart.code_discount">
+                                                    <small *ngIf="cart.type_discount == 1"> Descuento: - {{cart.discount}} %</small>
+                                                    
+                                                    <small *ngIf="cart.type_discount == 2"> Descuento: - {{cart.discount}} usd</small>
+                                                    <br>
+                                                    <small > CODIGO: {{cart.code_discount}}</small>
+                                                    <br>
+                                                    <small > Tipo de Campaña: <br>
+                                                        {{getNameCampaing(cart.type_campaing)}}
+                                                    </small>
+                                                </ng-container> -->
                                             </td>
                                             <td class="pro-subtotal"><span>${{cart.total}}</span></td>
                                             <td class="pro-remove"><a href="#" onclick="return false;" (click)="removeItem(cart)"><i class="feather-x"></i></a>

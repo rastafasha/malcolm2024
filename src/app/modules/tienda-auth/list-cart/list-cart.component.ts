@@ -15,6 +15,7 @@ export class ListCartComponent implements OnInit {
   @ViewChild('paypal',{static: true}) paypalElement?: ElementRef;
 
   listCarts: any = [];
+  listCartsProducts: any = [];
   user:any = null;
   code:any = null;
   totalSum:any = 0;
@@ -35,7 +36,9 @@ export class ListCartComponent implements OnInit {
     this.cartService.currentData$.subscribe((resp:any)=>{
       console.log(resp);
       this.listCarts = resp;
+      this.listCartsProducts = resp;
       this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
+      this.totalSum = this.listCartsProducts.reduce((sum:number, item:any)=> sum + item.total,0 );
     })
 
     if(this.user){
@@ -167,6 +170,7 @@ export class ListCartComponent implements OnInit {
 
   emptyCart():void{
     this.listCarts = [];
+    this.listCartsProducts = [];
     this.totalSum = 0;
     this.cartService.resetCart();
   }

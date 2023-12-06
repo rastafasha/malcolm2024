@@ -1,0 +1,92 @@
+<div class="rbt-rbt-blog-area rbt-section-gap bg-color-extra2">
+    <div class="container">
+        <div class="row g-5 align-items-center mb--30">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="section-title">
+                    <span class="subtitle bg-pink-opacity">Products</span>
+                    <h2 class="title">Popular Products.</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="read-more-btn text-start text-md-end">
+                    <a class="rbt-btn btn-gradient hover-icon-reverse" href="blog.html">
+                        <div class="icon-reverse-wrapper">
+                            <span class="btn-text">See All Products</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5">
+            <ng-container *ngFor="let product of PRODUCTS_HOME">
+                <!-- Start Single Course  -->
+              <div class="col-lg-4 col-md-6 col-12">
+                <div class="rbt-card variation-01 rbt-hover">
+                    <div class="rbt-card-img">
+                        <a [routerLink]="['/tienda-guest/landing-product/',product.slug]">
+                            <img [src]="product.imagen" style="height:200px" alt="Card image">
+                            <!-- <div class="rbt-badge-3 bg-white" *ngIf="product.discount_g">
+                                <span *ngIf="product.discount_g.type_discount == 1">-{{course.discount_g.discount}}%</span>
+                                <span *ngIf="product.discount_g.type_discount == 2">-{{course.discount_g.discount}} USD</span>
+                                <span >OFF</span>
+                            </div> -->
+                        </a>
+                    </div>
+                    <div class="rbt-card-body">
+        
+                        <div class="rbt-card-top">
+                            <div class="rbt-review">
+                                <div class="rating">
+                                    <i class="fas fa-star" [ngClass]="{'rating':product.avg_reviews < 1}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':product.avg_reviews < 2}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':product.avg_reviews < 3}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':product.avg_reviews < 4}"></i>
+                                    <i class="fas fa-star" [ngClass]="{'rating':product.avg_reviews < 5}"></i>
+                                </div>
+                                <span class="rating-count"> ({{product.count_reviews}} Reviews)</span>
+                            </div>
+                            <div class="rbt-bookmark-btn">
+                                <a class="rbt-round-btn" title="Bookmark" href="#"><i class="feather-bookmark"></i></a>
+                            </div>
+                        </div>
+        
+                        <h4 class="rbt-card-title"><a [routerLink]="['/tienda-guest/landing-product/',product.slug]">{{product.title}}</a>
+                        </h4>
+                        <ul class="rbt-meta">
+                            <!-- <li><i class="feather-book"></i>{{course.count_class}} Lessons</li>
+                            <li><i class="feather-users"></i>{{course.count_students}} Students</li> -->
+                        </ul>
+                        <p class="rbt-card-text">{{product.description}}</p>
+                        <!-- <div class="rbt-author-meta mb--20">
+                            <div class="rbt-avater">
+                                <a href="#">
+                                    <img [src]="course.instructor.avatar" [alt]="course.instructor.full_name">
+                                </a>
+                            </div>
+                            <div class="rbt-author-info">
+                                By <a href="profile.html">{{course.instructor.full_name}}</a> In <a href="#">{{course.instructor.profesion}}</a>
+                            </div>
+                        </div> -->
+        
+                        <div class="rbt-card-bottom">
+                            <div class="rbt-price">
+                                <span class="current-price">{{ getTotalPriceCourse(product)}} USD</span>
+                                <span class="off-price" *ngIf="product.discount_g">{{product.price_usd}}</span>
+                            </div>
+                            <a class="rbt-btn-link" href="#" onclick="return false;" (click)="addCart(product)">
+                                <i class="feather-shopping-cart"></i>
+                                Add to Cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Course  -->
+            </ng-container>
+              
+        
+          </div>
+     </div>
+  </div>

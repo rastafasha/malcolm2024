@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   CATEGORIES:any = [];
   COURSES_HOME:any = [];
+  PRODUCTS_HOME:any = [];
 
   group_courses_categories:any = [];
   discount_flash:any = [];
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
   discount_banner:any;
   user:any = null;
   landing_course:any= null;
+  landing_product:any= null;
 
   constructor(
     public homeService: HomeService,
@@ -48,6 +50,7 @@ export class HomeComponent implements OnInit {
       this.group_courses_categories = resp.group_courses_categories;
       this.discount_flash = resp.discount_flash;
       this.discount_flash_courses = resp.discount_flash_courses;
+      this.PRODUCTS_HOME = resp.products_home.data;
       setTimeout(()=>{
         countdownT();
       },50);

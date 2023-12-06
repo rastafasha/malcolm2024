@@ -4,15 +4,19 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 import { BannerHomeComponent } from './banner-home/banner-home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BannerInicioComponent } from './banner-inicio/banner-inicio.component';
 import { BannerSolucionesComponent } from './banner-soluciones/banner-soluciones.component';
 import { HeaderPagesComponent } from './header-pages/header-pages.component';
 
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+// export function cargarTraductor(http:HttpClient){
+//   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
+// }
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -37,7 +41,16 @@ import { HeaderPagesComponent } from './header-pages/header-pages.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    TranslateModule,
+    HttpClientModule,
+    // TranslateModule.forRoot({
+    //     loader: {
+    //         provide: TranslateLoader,
+    //         useFactory: (cargarTraductor),
+    //         deps: [HttpClient]
+    //     }
+    // })
   ]
 })
 export class SharedModule { }

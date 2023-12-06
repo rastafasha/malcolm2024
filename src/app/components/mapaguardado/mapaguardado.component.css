@@ -1,0 +1,8 @@
+.mapacontainer{
+    position: relative;
+    right: 0;
+    top: 0px;
+    width: 100%;
+    height: 20vh;
+    /* background-color: red; */
+}

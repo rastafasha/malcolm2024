@@ -33,6 +33,7 @@ export class ContactFormComponent implements OnInit {
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required]),
+      whatsapp: new FormControl('',),
       subject: new FormControl('', [Validators.required]),
       comment: new FormControl('', [Validators.required]),
       status: new FormControl('PENDING', [Validators.required])

@@ -8,6 +8,7 @@ import { CartService } from 'src/app/modules/tienda-guest/service/cart.service';
 import { TiendaGuestService } from 'src/app/modules/tienda-guest/service/tienda-guest.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { PortafolioService } from 'src/app/services/portafolio.service';
+import {TranslateService} from '@ngx-translate/core';
 
 declare function cartSidenav():any;
 declare function _clickDocTwo():any;
@@ -33,6 +34,11 @@ export class HeaderPagesComponent implements OnInit {
   categorias: any= Categoria;
   postrecientes: any= Portafolio;
   
+  langs: string[] = [];
+  public activeLang = 'es';
+
+  flag = false;
+
   error: string;
 
   constructor(
@@ -42,8 +48,30 @@ export class HeaderPagesComponent implements OnInit {
     private categoryService: CategoriaService,
     public router:Router,
     public tiendaGuestService: TiendaGuestService,
+    private translate: TranslateService
 
-  ) { }
+  ) { 
+    // this.translate.setDefaultLang('es');
+    this.translate.setDefaultLang(this.activeLang);
+    this.translate.use('es');
+    this.translate.addLangs(["es", "en"]);
+    this.langs = this.translate.getLangs();
+    translate.get(this.langs).subscribe(res =>{
+      console.log(res);
+    })
+    // console.log(this.translate);
+  }
+
+  // cambiarLang(lang:string){
+  //   this.translate.use(lang);
+
+  // }
+
+  public cambiarLenguaje(lang) {
+    this.activeLang = lang;
+    this.translate.use(lang);
+    this.flag = !this.flag;
+  }
 
   ngOnInit(): void {
     this.user = this.authService.user;
@@ -139,4 +167,6 @@ export class HeaderPagesComponent implements OnInit {
 
       }
   }
+
+  
 }

@@ -62,19 +62,26 @@
                             <div class="header-info">
                                 <ul class="rbt-dropdown-menu switcher-language">
                                     <li class="has-child-menu">
-                                        <a href="#">
-                                            <img class="left-image" src="assets/images/icons/de.png" alt="Language Images">
-                                            <span class="menu-item">Español</span>
-                                            <i class="right-icon feather-chevron-down"></i>
+                                        <a style="cursor: pointer;">
+                                            <!-- <img class="left-image" src="assets/images/icons/de.png" alt="Language Images"> -->
+                                            
+
+                                            <a *ngIf="!flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')"><span class="menu-item">Español</span></a>
+                
+
+                                            <!-- <i class="right-icon feather-chevron-down"></i> -->
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="#">
-                                                    <img class="left-image" src="assets/images/icons/en-us.png" alt="Language Images">
-                                                    <span class="menu-item">English</span>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    </li>
+                                    <li class="has-child-menu">
+                                        <a style="cursor: pointer;">
+                                            <!-- <img class="left-image" src="assets/images/icons/de.png" alt="Language Images"> -->
+                                            
+
+                                            <a *ngIf="flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'en'}" (click)="cambiarLenguaje('es')"><span class="menu-item">English</span></a>
+                
+
+                                            <!-- <i class="right-icon feather-chevron-down"></i> -->
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -122,11 +129,11 @@
                         <ul class="mainmenu">
                             
                             <li class="with-megamenu has-menu-child-item position-static">
-                                <a routerLink="/">Home</a>
+                                <a routerLink="/">{{ 'Inicio'|translate}}</a>
                             </li>
                             
                             <li class="has-dropdown has-menu-child-item">
-                                <a href="#" onclick="return false;">Portafolio
+                                <a href="#" onclick="return false;">{{ 'Portafolio'|translate}}
                                     <i class="feather-chevron-down"></i>
                                 </a>
                                 <ul class="submenu">
@@ -141,17 +148,16 @@
 
                             </li>
                             
-                            <li><a routerLink="/soluciones-web">Soluciones Web</a></li>
-                            <li class="with-megamenu has-menu-child-item position-static">
-                                <a routerLink="/store">Tienda</a>
+                            <li><a routerLink="/soluciones-web">{{ 'Soluciones Web'|translate}}</a></li>
+                            <li><a routerLink="/acerca-de">{{ 'Acerca de'|translate}}</a></li>
+                            <li> <a routerLink="/blog">{{ 'Blog'|translate}} </a></li>
+                            
+                            <li >
+                                <a routerLink="/store">{{ 'Tienda'|translate}} </a>
                             </li>
-                            <li class="with-megamenu has-menu-child-item">
-                                <a routerLink="/tienda-guest/listado-de-cursos">Courses </a>
+                            <li >
+                                <a routerLink="/tienda-guest/listado-de-cursos">{{ 'Cursos'|translate}} </a>
                                 
-                            </li>
-                            <li><a routerLink="/acerca-de">Acerca de</a></li>
-                            <li class="with-megamenu has-menu-child-item position-static">
-                                <a href="#">Blog </a>
                             </li>
                             
                         </ul>
@@ -177,22 +183,22 @@
   
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
                             <a href="#" *ngIf="user"><i class="feather-user"></i>{{user.name}}</a>
-                            <a routerLink="/auth/login" *ngIf="!user"><i class="feather-lock"></i>Ingresar</a>
+                            <a routerLink="/auth/login" *ngIf="!user"><i class="feather-lock"></i>{{ 'Ingresar'|translate}}</a>
                             <div class="rbt-user-menu-list-wrapper"  *ngIf="user">
                                 <div class="inner">
                                     <div class="rbt-admin-profile">
                                         <div class="admin-thumbnail">
-                                            <div *ngIf="!user.avatar">
+                                            <div *ngIf="!usuario.avatar">
                                                 <img src="assets/images/team/avatar.jpg" alt="User Images">
 
                                             </div>
-                                            <div *ngIf="user.avatar">
-                                                <img [src]="user.avatar" [alt]="user.name">
+                                            <div *ngIf="usuario.avatar">
+                                                <img src="{{imagenSerUrl}}{{usuario.avatar}}" [alt]="user.name">
                                             </div>
                                         </div>
                                         <div class="admin-info">
                                             <span class="name">{{user.name}}</span>
-                                            <a class="rbt-btn-link color-primary" routerLink="/tienda-auth/perfil-del-cliente">View Profile</a>
+                                            <a class="rbt-btn-link color-primary" routerLink="/tienda-auth/perfil-del-cliente"> {{ 'View Profile'|translate}}</a>
                                         </div>
                                     </div>
                                     <!-- <ul class="user-list-wrapper" >
@@ -259,13 +265,13 @@
                                         <li>
                                             <a routerLink="/tienda-auth/perfil-del-cliente">
                                                 <i class="feather-settings"></i>
-                                                <span>Settings</span>
+                                                <span> {{ 'Settings'|translate}}</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#" onclick="return false" (click)="logout()">
                                                 <i class="feather-log-out"></i>
-                                                <span>Logout</span>
+                                                <span> {{ 'Logout'|translate}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -280,7 +286,13 @@
                                 <div class="inner">
                                     <div class="rbt-admin-profile">
                                         <div class="admin-thumbnail">
-                                            <img src="assets/images/team/avatar.jpg" alt="User Images">
+                                            <div *ngIf="!usuario.avatar">
+                                                <img src="assets/images/team/avatar.jpg" alt="User Images">
+
+                                            </div>
+                                            <div *ngIf="usuario.avatar">
+                                                <img src="{{imagenSerUrl}}{{usuario.avatar}}" [alt]="user.name">
+                                            </div>
                                         </div>
                                         <div class="admin-info">
                                             <span class="name">{{user.name}}</span>
@@ -574,7 +586,7 @@
         <nav class="side-nav w-100">
             <ul class="rbt-minicart-wrapper">
                 <ng-container *ngFor="let cart of listCarts">
-                    <li class="minicart-item">
+                    <li class="minicart-item" *ngIf="cart.course">
                         <div class="thumbnail">
                             <a [routerLink]="['/tienda-guest/landing-curso/',cart.course.slug]">
                                 <img [src]="cart.course.imagen" alt="Product Images">
@@ -589,10 +601,26 @@
                             <button class="rbt-round-btn" (click)="removeItem(cart)"><i class="feather-x"></i></button>
                         </div>
                     </li>
+                    <li class="minicart-item" *ngIf="cart.product">
+                        <div class="thumbnail">
+                            <a [routerLink]="['/tienda-guest/landing-curso/',cart.product.slug]">
+                                <img [src]="cart.product.imagen" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a [routerLink]="['/tienda-guest/landing-product/',cart.product.slug]">{{cart.product.title}}</a></h6>
+      
+                            <span class="quantity"><span class="price">{{cart.total}} USD</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn" (click)="removeItem(cart)"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
                     
                 </ng-container>
                 
             </ul>
+            
         </nav>
   
         <div class="rbt-minicart-footer">

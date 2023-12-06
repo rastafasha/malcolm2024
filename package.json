@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "start:dev": "ng serve --port 5000",
     "start:prod": "ng build && lite-server -p 8080 --baseDir dist/malcolm2024",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -21,7 +22,10 @@
     "@angular/router": "^14.2.0",
     "@angular/service-worker": "^14.3.0",
     "@ckeditor/ckeditor5-angular": "^7.0.1",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "lite-server": "^2.6.1",
+    "mapbox-gl": "^2.15.0",
     "ng2-youtube-player": "^0.0.31",
     "ngx-pagination": "^6.0.3",
     "ngx-youtube-player": "^12.0.2",

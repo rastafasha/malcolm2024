@@ -9,18 +9,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FilterCoursesComponent } from './filter-courses/filter-courses.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
 @NgModule({
   declarations: [
     TiendaGuestComponent,
     CourseDetailComponent,
-    FilterCoursesComponent
+    FilterCoursesComponent,
+    ProductDetailComponent
   ],
   exports: [
     TiendaGuestComponent,
     CourseDetailComponent,
-    FilterCoursesComponent
+    FilterCoursesComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

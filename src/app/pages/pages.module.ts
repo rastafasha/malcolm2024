@@ -17,6 +17,7 @@ import { ByCategoryComponent } from './by-category/by-category.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { FoliomovilComponent } from './portafolio/foliomovil/foliomovil.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -53,7 +54,8 @@ import { FoliomovilComponent } from './portafolio/foliomovil/foliomovil.componen
     ReactiveFormsModule,
     RouterModule,
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    TranslateModule
   ]
 })
 export class PagesModule { }

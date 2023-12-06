@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SharedModule,  } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
@@ -14,7 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from './pipes/pipes.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ComponentsModule } from './components/components.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function cargarTraductor(http:HttpClient){
+  return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,7 @@ import { environment } from '../environments/environment';
     PipesModule,
     RouterModule,
     CmspageModule,
+    ComponentsModule,
     FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -37,7 +44,14 @@ import { environment } from '../environments/environment';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (cargarTraductor),
+          deps: [HttpClient]
+      }
+  })
     
 
   ],

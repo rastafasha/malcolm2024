@@ -2,3 +2,11 @@
     color:black !important;
     margin-right: 0;
 }
+
+.btnlocalizar{
+    position: relative;
+    top: 0px;
+    left: 300px;
+    z-index: 999;
+    
+}

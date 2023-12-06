@@ -22,6 +22,7 @@ export class BlogComponent implements OnInit {
   categorias: any =[];
   categoria: any;
   blogs: any;
+  destacados: any;
   slug: any=null;
   error: string;
   imagenSerUrl = environment.apiUrlMedia;
@@ -44,6 +45,7 @@ export class BlogComponent implements OnInit {
     window.scrollTo(0, 0);
     this.closeMenu();
     this.getblogs();
+    this.getdestacadoss();
   }
 
 
@@ -53,6 +55,15 @@ export class BlogComponent implements OnInit {
         this.blogs = res;
         error => this.error = error
         console.log(this.blogs);
+      }
+    );
+  }
+  getdestacadoss(): void {
+    this.blogService.getDestacados().subscribe(
+      (res:any) =>{
+        this.destacados = res;
+        error => this.error = error
+        console.log(res);
       }
     );
   }

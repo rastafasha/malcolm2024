@@ -66,6 +66,14 @@ export class BlogService {
       )
   }
 
+  getDestacados() {
+    const url = `${baseUrl}/blog/destacados`;
+    return this.http.get<any>(url)
+      .pipe(
+        map((resp:{ok: boolean, destacados: Blog}) => resp.destacados)
+      )
+  }
+
 
   getPostByCategory(id: Categoria) {
     const url = `${baseUrl}/blog/category/${id}`;

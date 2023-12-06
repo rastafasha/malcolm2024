@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'malcolm2024';
+  
+  constructor(
+  ){
+    
+  }
+
+
+  // get localizacionListo(){
+  //   // console.log(this.lugarService.localizacion);
+  //   return this.lugarService.localizacionListo;
+  // }
+
+  
 }
