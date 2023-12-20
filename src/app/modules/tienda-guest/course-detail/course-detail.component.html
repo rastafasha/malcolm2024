@@ -96,37 +96,37 @@
                     <div class="rbt-inner-onepage-navigation sticky-top mt--30">
                         <nav class="mainmenu-nav onepagenav">
                             <ul class="mainmenu">
-                                <li class="current">
-                                    <a href="#overview">Overview</a>
+                               
+
+                                <li [ngClass]="{'current': option_selected == 1}">
+                                    <a href="#" onclick="return false;"  (click)="optionSelected(1)">Overview</a>
                                 </li>
-                                <li>
-                                    <a href="#coursecontent">Course Content</a>
+                                <li [ngClass]="{'current': option_selected == 2}">
+                                    <a href="#" onclick="return false;"  (click)="optionSelected(2)">Details</a>
                                 </li>
-                                <li>
-                                    <a href="#details">Details</a>
+                                <li [ngClass]="{'current': option_selected == 3}">
+                                    <a href="#" onclick="return false;"  (click)="optionSelected(3)">Intructor</a>
                                 </li>
-                                <li>
-                                    <a href="#intructor">Intructor</a>
-                                </li>
-                                <li>
-                                    <a href="#review">Review</a>
+                                <li [ngClass]="{'current': option_selected == 4}">
+                                    <a href="#" onclick="return false;"  (click)="optionSelected(4)">Review</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
+                    <div *ngIf="option_selected == 1">
+                        <!-- Start Course Feature Box  -->
+                            <div class="rbt-course-feature-box overview-wrapper rbt-shadow-box mt--30 has-show-more"
+                            id="overview">
+                            <div class="rbt-course-feature-inner has-show-more-inner-content"
+                                [innerHtml]="landing_course.description">
 
-                    <!-- Start Course Feature Box  -->
-                    <div class="rbt-course-feature-box overview-wrapper rbt-shadow-box mt--30 has-show-more"
-                        id="overview">
-                        <div class="rbt-course-feature-inner has-show-more-inner-content"
-                            [innerHtml]="landing_course.description">
-
+                            </div>
+                            <!-- <div class="rbt-show-more-btn">Show More</div> -->
                         </div>
-                        <!-- <div class="rbt-show-more-btn">Show More</div> -->
+                        <!-- End Course Feature Box  -->
                     </div>
-                    <!-- End Course Feature Box  -->
-
-                    <!-- Start Course Content  -->
+                    <div *ngIf="option_selected == 2">
+                        <!-- Start Course Content  -->
                     <div class="course-content rbt-shadow-box coursecontent-wrapper mt--30" id="coursecontent">
                         <div class="rbt-course-feature-inner">
                             <div class="section-title">
@@ -217,8 +217,9 @@
                         </div>
                     </div>
                     <!-- End Course Feature Box  -->
-
-                    <!-- Start Intructor Area  -->
+                    </div>
+                    <div *ngIf="option_selected == 3">
+                        <!-- Start Intructor Area  -->
                     <div class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30" id="intructor">
                         <div class="about-author border-0 pb--0 pt--0">
                             <div class="section-title mb--30">
@@ -280,8 +281,9 @@
                         </div>
                     </div>
                     <!-- End Intructor Area  -->
-
-                    <!-- Start Edu Review List  -->
+                    </div>
+                    <div *ngIf="option_selected == 4">
+                        <!-- Start Edu Review List  -->
                     <div class="rbt-review-wrapper rbt-shadow-box review-wrapper mt--30" id="review">
                         <div class="course-content">
                             <div class="section-title">
@@ -503,6 +505,14 @@
                         </div>
                     </div>
                     <!-- End Edu Review List  -->
+                    </div>
+                    
+
+                    
+
+                    
+
+                    
 
                     <div class="about-author-list rbt-shadow-box featured-wrapper mt--30 has-show-more">
                         <div class="section-title">

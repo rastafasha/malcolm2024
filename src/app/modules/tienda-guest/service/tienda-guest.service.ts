@@ -51,5 +51,7 @@ export class TiendaGuestService {
     let URL = URL_SERVICIOS+"/ecommerce/list_products/";
     return this.http.post(URL,data );
   }
+
+  
   
 }

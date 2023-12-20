@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FilterCoursesComponent } from './filter-courses/filter-courses.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FilterProductsComponent } from './filter-products/filter-products.component';
 
 
 @NgModule({
@@ -17,13 +18,15 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     TiendaGuestComponent,
     CourseDetailComponent,
     FilterCoursesComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FilterProductsComponent
   ],
   exports: [
     TiendaGuestComponent,
     CourseDetailComponent,
     FilterCoursesComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FilterProductsComponent
   ],
   imports: [
     CommonModule,

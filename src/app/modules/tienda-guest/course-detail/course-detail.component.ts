@@ -25,6 +25,8 @@ export class CourseDetailComponent implements OnInit {
   DISCOUNT:any = null;
   user:any = null;
   isHaveCourse: any = false;
+  option_selected:number = 1;
+
   constructor(
     public activatedRoute:ActivatedRoute,
     public tiendaGuestService: TiendaGuestService,
@@ -115,6 +117,11 @@ export class CourseDetailComponent implements OnInit {
       }
 
     })
+  }
+
+  optionSelected(value:number){
+    this.option_selected = value;
+    console.log(value);
   }
 
 }

@@ -4,6 +4,7 @@ import { TiendaGuestComponent } from './tienda-guest.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { FilterCoursesComponent } from './filter-courses/filter-courses.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FilterProductsComponent } from './filter-products/filter-products.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
         path:'landing-product/:slug', component: ProductDetailComponent      },
       {
         path:'listado-de-cursos', component: FilterCoursesComponent
+      },
+      {
+        path:'listado-de-productos', component: FilterProductsComponent
       },
     ]
   }
