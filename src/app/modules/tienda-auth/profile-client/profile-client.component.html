@@ -580,7 +580,7 @@
                                                     <td>
                                                         <img [src]="sale.course.imagen" style="width: 50px;" alt="">
                                                     </td>
-                                                    <td>{{sale.course.title}}</td>
+                                                    <td><a [routerLink]="['/tienda-auth/mi-curso/',sale.course.slug]">{{sale.course.title}}</a></td>
                                                     <td>
                                                         <ng-container *ngIf="sale.code_cupon">
                                                             <small *ngIf="sale.type_discount == 1"> Descuento: - {{sale.discount}} %</small>
@@ -792,15 +792,15 @@
                                                 <form action="#" class="rbt-profile-row rbt-default-form row row--15">
                                                     <div class="col-12 col-sm-6">
                                                         <div class="rbt-form-group">
-                                                            <label for="facebook"><i class="feather-facebook"></i>
-                                                                Titulo de Dirección</label>
+                                                            <label for="facebook"><i class="feather-bookmark"></i>
+                                                                Título de Dirección</label>
                                                             <input  type="text" name="title" [(ngModel)]="title"
                                                                 placeholder="Trabajo">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="rbt-form-group">
-                                                            <label for="facebook"><i class="feather-facebook"></i>
+                                                            <label for="facebook"><i class="feather-user"></i>
                                                                 Nombre</label>
                                                             <input  type="text" name="name" [(ngModel)]="user.name" [readOnly]="true"
                                                                 placeholder="María Alejandra Pérez Perez">
@@ -808,39 +808,34 @@
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="rbt-form-group">
-                                                            <label for="twitter"><i class="feather-twitter"></i> direccion</label>
+                                                            <label for="twitter"><i class="feather-globe"></i> Dirección</label>
                                                             <input  type="text" name="direccion" [(ngModel)]="direccion" placeholder="Av/Calle/Edific o casa">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="rbt-form-group">
-                                                            <label for="linkedin"><i class="feather-linkedin"></i>
-                                                                referencia</label>
+                                                            <label for="linkedin">? &nbsp;
+                                                                Referencia</label>
                                                             <input  type="text" name="referencia" [(ngModel)]="referencia"
                                                                 placeholder="punto de referencia">
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-4">
+                                                    
+                                                    <div class="col-12 col-sm-6">
                                                         <div class="rbt-form-group">
-                                                            <label for="website"><i class="feather-globe"></i> pais</label>
-                                                            <input  type="text" name="pais" [(ngModel)]="pais" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-sm-4">
-                                                        <div class="rbt-form-group">
-                                                            <label for="github"><i class="feather-github"></i> ciudad</label>
+                                                            <label for="github"><i class="feather-globe"></i> Ciudad</label>
                                                             <input  type="text" name="ciudad" [(ngModel)]="ciudad" >
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-4">
+                                                    <div class="col-12 col-sm-6">
                                                         <div class="rbt-form-group">
-                                                            <label for="github"><i class="feather-github"></i> zip</label>
+                                                            <label for="github"><i class="feather-globe"></i> ZIP/C.Postal</label>
                                                             <input  type="text" name="zip" [(ngModel)]="zip" >
                                                         </div>
                                                     </div>
                                                     <div class="col-12 ">
                                                         <div class="rbt-form-group">
-                                                            <label for="github"><i class="feather-github"></i> Mi localización</label>
+                                                            <label for="github"><i class="feather-globe"></i> Mi localización</label>
                                                             <input  type="text" name="googlemap" [(ngModel)]="lugarService.localizacion" [readOnly]="true">
                                                             <app-cargandomapa *ngIf="!localizacionListo; else mapa"></app-cargandomapa>
 
@@ -862,7 +857,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Title</th>
-                                                            <th>direccion</th>
+                                                            <th>Dirección</th>
                                                             <th>Show Detail</th>
                                                         </tr>
                                                     </thead>
@@ -890,51 +885,41 @@
                                         <div class="rbt-dashboard-table table-responsive mobile-table-750" *ngIf="direccionSelected">
                                             <div class="row">
                                                 
-                                                    <div class="col-12 col-sm-6">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="rbt-form-group">
                                                             <b >
-                                                                Titulo de Dirección</b><br>
+                                                                Título de Dirección</b><br>
                                                             {{direccionSelected.title}}
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-6">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="rbt-form-group">
                                                             <b >
-                                                                Nombre</b><br>
-                                                                {{direccionSelected.name}} {{direccionSelected.surname}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-sm-6">
-                                                        <div class="rbt-form-group">
-                                                            <b > direccion</b><br>
-                                                            {{direccionSelected.direccion}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-sm-6">
-                                                        <div class="rbt-form-group">
-                                                            <b >
-                                                                referencia</b><br>
+                                                                Referencia</b><br>
                                                                 {{direccionSelected.referencia}}
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-4">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="rbt-form-group">
-                                                            <b > pais</b><br>
-                                                            {{direccionSelected.pais}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-sm-4">
-                                                        <div class="rbt-form-group">
-                                                            <b > ciudad</b><br>
+                                                            <b > Ciudad</b><br>
                                                             {{direccionSelected.ciudad}}
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-4">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="rbt-form-group">
-                                                            <b > zip</b><br>
+                                                            <b > ZIP/C.Postal</b><br>
                                                             {{direccionSelected.zip}}
                                                         </div>
                                                     </div>
+                                                    <div class="col-12 ">
+                                                        <div class="rbt-form-group">
+                                                            <b > Dirección</b><br>
+                                                            {{direccionSelected.direccion}}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                   
+                                                    
                                             </div>
                                                 
                                                 

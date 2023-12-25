@@ -15,6 +15,8 @@ export class CourseLessonComponent implements OnInit {
   slug:any = null;
   coursesSelected:any = null;
   classeSelected:any = null;
+  videoSelected:any = null;
+  option_selected:number = 1;
 
   constructor(
     public tiendaAuthService: TiendaAuthService,
@@ -36,17 +38,24 @@ export class CourseLessonComponent implements OnInit {
         this.router.navigateByUrl("/");
       }
       this.coursesSelected = resp.course;
+      this.videoSelected = this.coursesSelected.malla[0].clases[0].vimeo;
       this.classeSelected = this.coursesSelected.malla[0].clases[0];
 
     })
   }
 
   urlVideo(classeSelected:any){
+    console.log(this.classeSelected.vimeo);
     return this.sanitizer.bypassSecurityTrustResourceUrl(classeSelected.vimeo)
   }
 
   openClase(clase:any){
     this.classeSelected = clase;
+  }
+
+  optionSelected(value:number){
+    this.option_selected = value;
+    console.log(value);
   }
 
 }

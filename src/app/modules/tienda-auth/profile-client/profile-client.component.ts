@@ -107,7 +107,7 @@ export class ProfileClientComponent implements OnInit {
       this.name  = resp.direccions.data.user.name;
       this.direccion = resp.direccions.data.direccion;
       this.referencia = resp.direccions.data.referencia;
-      this.pais = resp.direccions.data.pais;
+      // this.pais = resp.direccions.data.pais;
       this.ciudad = resp.direccions.data.ciudad;
       this.zip = resp.direccions.data.zip;
       this.googlemaps = resp.direccions.data.googlemaps;
@@ -256,7 +256,7 @@ export class ProfileClientComponent implements OnInit {
     formData.append('title', this.title);
     formData.append('direccion', this.direccion);
     formData.append('referencia', this.referencia);
-    formData.append('pais', this.pais);
+    // formData.append('pais', this.pais);
     formData.append('ciudad', this.ciudad);
     formData.append('googlemaps', this.googlemaps);
     formData.append('zip', this.zip);
@@ -271,7 +271,7 @@ export class ProfileClientComponent implements OnInit {
       this.title = null;
           this.direccion = null;
           this.referencia = null;
-          this.pais = null;
+          // this.pais = null;
           this.ciudad = null;
           this.zip = null;
           this.googlemaps =  [];
