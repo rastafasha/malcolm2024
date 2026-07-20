@@ -51,7 +51,7 @@ export function cargarTraductor(http:HttpClient){
           useFactory: (cargarTraductor),
           deps: [HttpClient]
       }
-  })
+    })
     
 
   ],
