@@ -4,8 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 import { BannerHomeComponent } from './banner-home/banner-home.component';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BannerInicioComponent } from './banner-inicio/banner-inicio.component';
 import { BannerSolucionesComponent } from './banner-soluciones/banner-soluciones.component';
@@ -34,10 +34,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         BannerInicioComponent,
         BannerSolucionesComponent,
         HeaderPagesComponent
-    ], imports: [CommonModule,
+    ], imports: [
+        CommonModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule,
-        TranslateModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        TranslateModule],
+         providers: [
+            provideHttpClient(withInterceptorsFromDi())
+        ] })
 export class SharedModule { }
