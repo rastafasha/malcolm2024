@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "malcolm2024:build:production"
+              "buildTarget": "malcolm2024:build:production"
             },
             "development": {
-              "browserTarget": "malcolm2024:build:development"
+              "buildTarget": "malcolm2024:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "malcolm2024:build"
+            "buildTarget": "malcolm2024:build"
           }
         },
         "test": {
