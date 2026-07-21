@@ -6,9 +6,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 declare function alertDanger([]):any;
 
 @Component({
-  selector: 'app-course-lesson',
-  templateUrl: './course-lesson.component.html',
-  styleUrls: ['./course-lesson.component.css']
+    selector: 'app-course-lesson',
+    templateUrl: './course-lesson.component.html',
+    styleUrls: ['./course-lesson.component.css'],
+    standalone: false
 })
 export class CourseLessonComponent implements OnInit {
 

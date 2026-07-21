@@ -10,9 +10,10 @@ declare var $:any;
 declare function HOMEINIT([]):any;
 //activacion y uso de jquery
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+    selector: 'app-inicio',
+    templateUrl: './inicio.component.html',
+    styleUrls: ['./inicio.component.css'],
+    standalone: false
 })
 export class InicioComponent implements OnInit {
 

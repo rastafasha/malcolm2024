@@ -13,9 +13,10 @@ declare function alertSuccess([]):any;
 //activacion y uso de jquery
 
 @Component({
-  selector: 'app-banner-home',
-  templateUrl: './banner-home.component.html',
-  styleUrls: ['./banner-home.component.css']
+    selector: 'app-banner-home',
+    templateUrl: './banner-home.component.html',
+    styleUrls: ['./banner-home.component.css'],
+    standalone: false
 })
 export class BannerHomeComponent implements OnInit {
   discount_banner_courses:any = [];

@@ -5,9 +5,10 @@ import { BlogService } from 'src/app/services/blog.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-blog-detail',
-  templateUrl: './blog-detail.component.html',
-  styleUrls: ['./blog-detail.component.css']
+    selector: 'app-blog-detail',
+    templateUrl: './blog-detail.component.html',
+    styleUrls: ['./blog-detail.component.css'],
+    standalone: false
 })
 export class BlogDetailComponent implements OnInit {
 

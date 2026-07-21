@@ -6,9 +6,10 @@ declare var $:any;
 declare function magnigyPopup():any;
 declare function HOMEINIT([]):any;
 @Component({
-  selector: 'app-modalgrafico',
-  templateUrl: './modalgrafico.component.html',
-  styleUrls: ['./modalgrafico.component.css']
+    selector: 'app-modalgrafico',
+    templateUrl: './modalgrafico.component.html',
+    styleUrls: ['./modalgrafico.component.css'],
+    standalone: false
 })
 export class ModalgraficoComponent implements OnInit {
 

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 declare var $:any;
 declare function HOMEINIT([]):any;
 @Component({
-  selector: 'app-soluciones-web',
-  templateUrl: './soluciones-web.component.html',
-  styleUrls: ['./soluciones-web.component.css']
+    selector: 'app-soluciones-web',
+    templateUrl: './soluciones-web.component.html',
+    styleUrls: ['./soluciones-web.component.css'],
+    standalone: false
 })
 export class SolucionesWebComponent implements OnInit {
 

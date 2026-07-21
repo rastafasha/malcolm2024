@@ -12,9 +12,10 @@ declare function HOMEINIT([]):any;
 
 
 @Component({
-  selector: 'app-foliomovil',
-  templateUrl: './foliomovil.component.html',
-  styleUrls: ['./foliomovil.component.css']
+    selector: 'app-foliomovil',
+    templateUrl: './foliomovil.component.html',
+    styleUrls: ['./foliomovil.component.css'],
+    standalone: false
 })
 export class FoliomovilComponent implements OnInit {
 

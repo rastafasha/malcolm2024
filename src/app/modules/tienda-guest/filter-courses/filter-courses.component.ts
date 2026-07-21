@@ -11,9 +11,10 @@ declare function alertSuccess([]):any;
 declare function HOMEINIT([]):any;
 
 @Component({
-  selector: 'app-filter-courses',
-  templateUrl: './filter-courses.component.html',
-  styleUrls: ['./filter-courses.component.css']
+    selector: 'app-filter-courses',
+    templateUrl: './filter-courses.component.html',
+    styleUrls: ['./filter-courses.component.css'],
+    standalone: false
 })
 export class FilterCoursesComponent implements OnInit {
 

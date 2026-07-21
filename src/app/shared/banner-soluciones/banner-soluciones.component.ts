@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 declare var $:any;
 declare function HOMEINIT([]):any;
 @Component({
-  selector: 'app-banner-soluciones',
-  templateUrl: './banner-soluciones.component.html',
-  styleUrls: ['./banner-soluciones.component.css']
+    selector: 'app-banner-soluciones',
+    templateUrl: './banner-soluciones.component.html',
+    styleUrls: ['./banner-soluciones.component.css'],
+    standalone: false
 })
 export class BannerSolucionesComponent implements OnInit {
 

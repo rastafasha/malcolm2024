@@ -5,9 +5,10 @@ import { PortafolioService } from 'src/app/services/portafolio.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-grafico',
-  templateUrl: './grafico.component.html',
-  styleUrls: ['./grafico.component.css']
+    selector: 'app-grafico',
+    templateUrl: './grafico.component.html',
+    styleUrls: ['./grafico.component.css'],
+    standalone: false
 })
 export class GraficoComponent implements OnInit {
 

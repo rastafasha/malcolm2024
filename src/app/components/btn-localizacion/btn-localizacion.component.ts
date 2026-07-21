@@ -3,9 +3,10 @@ import { LugaresService } from 'src/app/services/lugares.service';
 import { MapaService } from 'src/app/services/mapa.service';
 
 @Component({
-  selector: 'app-btn-localizacion',
-  templateUrl: './btn-localizacion.component.html',
-  styleUrls: ['./btn-localizacion.component.css']
+    selector: 'app-btn-localizacion',
+    templateUrl: './btn-localizacion.component.html',
+    styleUrls: ['./btn-localizacion.component.css'],
+    standalone: false
 })
 export class BtnLocalizacionComponent implements OnInit {
   googlemap:any=[];

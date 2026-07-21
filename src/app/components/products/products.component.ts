@@ -9,9 +9,10 @@ declare function alertDanger([]):any;
 declare function alertWarning([]):any;
 declare function alertSuccess([]):any;
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrls: ['./products.component.css'],
+    standalone: false
 })
 export class ProductsComponent implements OnInit {
   PRODUCTS_HOME:any = [];
