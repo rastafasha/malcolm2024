@@ -8,36 +8,30 @@ import { CargandomapaComponent } from './cargandomapa/cargandomapa.component';
 import { MapavistaComponent } from './mapavista/mapavista.component';
 import { MapaguardadoComponent } from './mapaguardado/mapaguardado.component';
 import { ProductsComponent } from './products/products.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 
 
-@NgModule({
-  declarations: [
-    ModalgraficoComponent,
-    EndesarolloComponent,
-    BtnLocalizacionComponent,
-    MapavistaComponent,
-    CargandomapaComponent,
-    MapaguardadoComponent,
-    ProductsComponent
-  ],
-  exports: [
-    ModalgraficoComponent,
-    EndesarolloComponent,
-    BtnLocalizacionComponent,
-    MapavistaComponent,
-    CargandomapaComponent,
-    MapaguardadoComponent,
-    ProductsComponent
-  ],
-  imports: [
-    CommonModule,
-    PipesModule,
-    HttpClientModule,
-    RouterModule,
-  ]
-})
+@NgModule({ declarations: [
+        ModalgraficoComponent,
+        EndesarolloComponent,
+        BtnLocalizacionComponent,
+        MapavistaComponent,
+        CargandomapaComponent,
+        MapaguardadoComponent,
+        ProductsComponent
+    ],
+    exports: [
+        ModalgraficoComponent,
+        EndesarolloComponent,
+        BtnLocalizacionComponent,
+        MapavistaComponent,
+        CargandomapaComponent,
+        MapaguardadoComponent,
+        ProductsComponent
+    ], imports: [CommonModule,
+        PipesModule,
+        RouterModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class ComponentsModule { }

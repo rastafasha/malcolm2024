@@ -6,7 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AboutComponent } from './about/about.component';
 import { SolucionesWebComponent } from './soluciones-web/soluciones-web.component';
 import { GraficoComponent } from './portafolio/grafico/grafico.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesComponent } from './pages.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,41 +21,35 @@ import { TranslateModule } from '@ngx-translate/core';
 
 
 
-@NgModule({
-  declarations: [
-    InicioComponent,
-    AboutComponent,
-    SolucionesWebComponent,
-    GraficoComponent,
-    PagesComponent,
-    ByCategoryComponent,
-    BlogComponent,
-    BlogDetailComponent,
-    FoliomovilComponent
-  ],
-  exports: [
-    InicioComponent,
-    AboutComponent,
-    SolucionesWebComponent,
-    GraficoComponent,
-    PagesComponent,
-    ByCategoryComponent,
-    BlogComponent,
-    BlogDetailComponent,
-    FoliomovilComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    ComponentsModule,
-    PipesModule,
-    TranslateModule
-  ]
-})
+@NgModule({ declarations: [
+        InicioComponent,
+        AboutComponent,
+        SolucionesWebComponent,
+        GraficoComponent,
+        PagesComponent,
+        ByCategoryComponent,
+        BlogComponent,
+        BlogDetailComponent,
+        FoliomovilComponent
+    ],
+    exports: [
+        InicioComponent,
+        AboutComponent,
+        SolucionesWebComponent,
+        GraficoComponent,
+        PagesComponent,
+        ByCategoryComponent,
+        BlogComponent,
+        BlogDetailComponent,
+        FoliomovilComponent
+    ], imports: [CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        ComponentsModule,
+        PipesModule,
+        TranslateModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class PagesModule { }
