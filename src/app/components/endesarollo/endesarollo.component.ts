@@ -5,9 +5,10 @@ declare var $:any;
 declare function HOMEINIT([]):any;
 //activacion y uso de jquery
 @Component({
-  selector: 'app-endesarollo',
-  templateUrl: './endesarollo.component.html',
-  styleUrls: ['./endesarollo.component.css']
+    selector: 'app-endesarollo',
+    templateUrl: './endesarollo.component.html',
+    styleUrls: ['./endesarollo.component.css'],
+    standalone: false
 })
 export class EndesarolloComponent implements OnInit {
 

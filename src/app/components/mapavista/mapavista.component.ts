@@ -5,9 +5,10 @@ import {Map, Popup, Marker} from 'mapbox-gl';
 import { MapaService } from 'src/app/services/mapa.service';
 
 @Component({
-  selector: 'app-mapavista',
-  templateUrl: './mapavista.component.html',
-  styleUrls: ['./mapavista.component.css']
+    selector: 'app-mapavista',
+    templateUrl: './mapavista.component.html',
+    styleUrls: ['./mapavista.component.css'],
+    standalone: false
 })
 export class MapavistaComponent implements AfterViewInit, OnInit{
 

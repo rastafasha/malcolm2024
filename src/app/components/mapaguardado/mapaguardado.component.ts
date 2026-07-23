@@ -6,9 +6,10 @@ import { DireccionService } from 'src/app/services/direccion.service';
 import { Direccion } from 'src/app/models/direccion.model';
 
 @Component({
-  selector: 'app-mapaguardado',
-  templateUrl: './mapaguardado.component.html',
-  styleUrls: ['./mapaguardado.component.css']
+    selector: 'app-mapaguardado',
+    templateUrl: './mapaguardado.component.html',
+    styleUrls: ['./mapaguardado.component.css'],
+    standalone: false
 })
 export class MapaguardadoComponent implements OnInit {
 

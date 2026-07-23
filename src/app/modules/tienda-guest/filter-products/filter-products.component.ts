@@ -12,9 +12,10 @@ declare function HOMEINIT([]):any;
 
 
 @Component({
-  selector: 'app-filter-products',
-  templateUrl: './filter-products.component.html',
-  styleUrls: ['./filter-products.component.css']
+    selector: 'app-filter-products',
+    templateUrl: './filter-products.component.html',
+    styleUrls: ['./filter-products.component.css'],
+    standalone: false
 })
 export class FilterProductsComponent implements OnInit {
 

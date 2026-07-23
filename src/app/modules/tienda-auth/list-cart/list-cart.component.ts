@@ -6,9 +6,10 @@ declare function alertSuccess([]):any;
 declare function alertDanger([]):any;
 declare var paypal:any;
 @Component({
-  selector: 'app-list-cart',
-  templateUrl: './list-cart.component.html',
-  styleUrls: ['./list-cart.component.css']
+    selector: 'app-list-cart',
+    templateUrl: './list-cart.component.html',
+    styleUrls: ['./list-cart.component.css'],
+    standalone: false
 })
 export class ListCartComponent implements OnInit {
 

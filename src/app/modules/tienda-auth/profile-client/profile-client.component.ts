@@ -12,9 +12,10 @@ declare function alertSuccess([]):any;
 declare function alertDanger([]):any;
 
 @Component({
-  selector: 'app-profile-client',
-  templateUrl: './profile-client.component.html',
-  styleUrls: ['./profile-client.component.css']
+    selector: 'app-profile-client',
+    templateUrl: './profile-client.component.html',
+    styleUrls: ['./profile-client.component.css'],
+    standalone: false
 })
 export class ProfileClientComponent implements OnInit {
 

@@ -14,9 +14,10 @@ declare function cartSidenav():any;
 declare function _clickDocTwo():any;
 declare function alertSuccess([]):any;
 @Component({
-  selector: 'app-header-pages',
-  templateUrl: './header-pages.component.html',
-  styleUrls: ['./header-pages.component.css']
+    selector: 'app-header-pages',
+    templateUrl: './header-pages.component.html',
+    styleUrls: ['./header-pages.component.css'],
+    standalone: false
 })
 export class HeaderPagesComponent implements OnInit {
 

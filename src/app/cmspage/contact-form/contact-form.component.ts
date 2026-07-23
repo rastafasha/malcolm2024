@@ -6,9 +6,10 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-contact-form',
-  templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.css']
+    selector: 'app-contact-form',
+    templateUrl: './contact-form.component.html',
+    styleUrls: ['./contact-form.component.css'],
+    standalone: false
 })
 export class ContactFormComponent implements OnInit {
 

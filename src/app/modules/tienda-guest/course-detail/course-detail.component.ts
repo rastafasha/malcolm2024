@@ -11,9 +11,10 @@ declare function alertWarning([]):any;
 declare function alertSuccess([]):any;
 
 @Component({
-  selector: 'app-course-detail',
-  templateUrl: './course-detail.component.html',
-  styleUrls: ['./course-detail.component.css']
+    selector: 'app-course-detail',
+    templateUrl: './course-detail.component.html',
+    styleUrls: ['./course-detail.component.css'],
+    standalone: false
 })
 export class CourseDetailComponent implements OnInit {
 
