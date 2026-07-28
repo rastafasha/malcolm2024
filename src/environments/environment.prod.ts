@@ -5,6 +5,6 @@ export const environment = {
   mediaUrlRemoto: 'https://res.cloudinary.com/dmv6aukai/image/upload/v1741275492/malcolmfolio/uploads',
   //remoto
   URL_BACKEND: 'https://back-node-malcolm.onrender.com/',
-  URL_SERVICIOS: 'https://back-node-malcolm.onrender.com/public/api',
+  URL_SERVICIOS: 'https://back-node-malcolm.onrender.com/api',
   URL_FROTEND: 'https://malcolmcordova.com/',
 };
