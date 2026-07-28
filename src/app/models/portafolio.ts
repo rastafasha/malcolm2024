@@ -16,24 +16,24 @@ export class Portafolio {
      public createdAt: Date,
      public updatedAt: Date,
      public status?: 'PUBLISHED' | 'PENDING' | 'REJECTED',
-     public img?: string,
+     
      public user_id?: string,
   ){}
 
-  get imagenUrl(){
+  img: string;
+    get imagenUrl() {
 
-    if(!this.img){
-      return `${base_url}/portafolios/no-image.jpg`;
-    } else if(this.img.includes('https')){
-      return this.img;
-    } else if(this.img){
-      return `${base_url}/${this.img}`;
-    }else {
-      return `${base_url}/no-image.jpg`;
-      // return `./assets/img/no-image.jpg`;
+        if (!this.img) {
+            return `assets/img/no-image.jpg`;
+        } else if (this.img.includes('https')) {
+            return this.img;
+        } else if (this.img) {
+            return `${base_url}/pagos/${this.img}`;
+        } else {
+            return `${base_url}/pagos/no-image.jpg`;
+        }
+
     }
-
-  }
   
 
 

@@ -83,27 +83,27 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.user = this.authService.user;
 
-    this.cartService.currentData$.subscribe((resp:any)=>{
-      console.log(resp);
-      this.listCarts = resp;
-      this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
-    })
+    // this.cartService.currentData$.subscribe((resp:any)=>{
+    //   console.log(resp);
+    //   this.listCarts = resp;
+    //   this.totalSum = this.listCarts.reduce((sum:number, item:any)=> sum + item.total,0 );
+    // })
 
-    if(this.user){
-      this.cartService.listCart().subscribe((resp:any)=>{
-        // console.log(resp);
-        resp.carts.data.forEach((cart:any) => {
-          this.cartService.addCart(cart);
-        });
-      })
-    }
+    // if(this.user){
+    //   this.cartService.listCart().subscribe((resp:any)=>{
+    //     // console.log(resp);
+    //     resp.carts.data.forEach((cart:any) => {
+    //       this.cartService.addCart(cart);
+    //     });
+    //   })
+    // }
 
     setTimeout(()=>{
       cartSidenav();
       _clickDocTwo();
     }, 50 )
 
-    this.listarOpciones();
+    // this.listarOpciones();
     this.getCategories();
     this.closeMenu();
     this.getUser();
@@ -178,11 +178,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   getCategories(): void {
     // return this.planesService.carga_info();
-    this.categoryService.getCategories().subscribe(
-      res =>{
+    this.categoryService.getCategoriesActivas().subscribe(
+      (res:any) =>{
         this.categorias = res;
         error => this.error = error
-        // console.log(this.categorias);
+        console.log(this.categorias);
       }
     );
   }

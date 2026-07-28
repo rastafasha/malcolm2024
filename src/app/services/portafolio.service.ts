@@ -67,7 +67,7 @@ export class PortafolioService {
   }
 
 
-  getPostByCategory(id: Categoria) {
+  getPostByCategory(id: string) {
     const url = `${baseUrl}/portafolio/category/${id}`;
     return this.http.get<any>(url)
       .pipe(

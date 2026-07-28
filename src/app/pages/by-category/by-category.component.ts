@@ -23,8 +23,10 @@ export class ByCategoryComponent implements OnInit {
   categoria: any;
   portafolios: any=[];
   slug: any=null;
+  name: any=null;
   youtubeurl: any=null;
   error: string;
+  id: string;
   imagenSerUrl = environment.mediaUrlRemoto;
   selectedOption:number = 1;
 
@@ -45,31 +47,21 @@ export class ByCategoryComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.closeMenu();
-    this.activatedRoute.params.subscribe( ({id}) => this.getCategory(id));
-    // this.getCategory();
-    // this.getCategories();
-  }
-
-  getCategory(id:any): void {
-    this.categoryService.getCategory(id).subscribe(
-      (res:any) =>{
-        this.categoria = res;
-        // error => this.error = error
-        // console.log(this.categoria);
-        this.activatedRoute.params.subscribe( ({id}) => this.getPosts(id));
+    const slug = this.activatedRoute.snapshot.paramMap.get('slug');
+     this.slug = slug;
+    this.categoryService.getCategorySlug(this.slug).subscribe(
+      res => {
+       this.categoria = res;
+       this.id = res._id;
+       this.getPosts();
       }
     );
-  }
-  getCategories(): void {
-    this.categoryService.getCategories().subscribe(
-      (res:any) =>{
-        this.categorias = res;
-      }
-    );
+    
   }
 
-  getPosts(id:any): void {
-    this.portafolioService.getPostByCategory(id).subscribe(
+
+  getPosts(): void {
+    this.portafolioService.getPostByCategory(this.id).subscribe(
       (resp:any) =>{
         this.portafolios = resp;
         error => this.error = error

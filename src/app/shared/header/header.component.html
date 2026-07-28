@@ -63,13 +63,7 @@
                                 <ul class="rbt-dropdown-menu switcher-language">
                                     <li class="has-child-menu">
                                         <a style="cursor: pointer;">
-                                            <!-- <img class="left-image" src="assets/images/icons/de.png" alt="Language Images"> -->
-                                            
-
-                                            <a *ngIf="!flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')"><span class="menu-item">Español</span></a>
-                
-
-                                            <!-- <i class="right-icon feather-chevron-down"></i> -->
+                                             <a *ngIf="!flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')"><span class="menu-item">Español</span></a>
                                         </a>
                                     </li>
                                     <li class="has-child-menu">
@@ -127,22 +121,17 @@
                 <div class="rbt-main-navigation d-none d-xl-block">
                     <nav class="mainmenu-nav">
                         <ul class="mainmenu">
-                            
                             <li class="with-megamenu has-menu-child-item position-static">
                                 <a routerLink="/">{{ 'Inicio'|translate}}</a>
                             </li>
-                            
                             <li class="has-dropdown has-menu-child-item">
                                 <a href="#" onclick="return false;">{{ 'Portafolio'|translate}}
                                     <i class="feather-chevron-down"></i>
                                 </a>
-                                <ul class="submenu">
-                                    <ng-container  *ngFor="let category of categorias">
-                                        <li class="with-megamenu has-menu-child-item position-static">
-                                            
-                                            <a [routerLink]="['/portafolio/category/', category._id]">{{category.name}}</a>
-                                        </li>
-                                    </ng-container>
+                                <ul class="submenu" *ngFor="let category of categorias">
+                                    <li class="with-megamenu has-menu-child-item position-static">
+                                        <a [routerLink]="['/portafolio/category/', category.slug]">{{category.name}}</a>
+                                    </li>
                                     
                                 </ul>
 

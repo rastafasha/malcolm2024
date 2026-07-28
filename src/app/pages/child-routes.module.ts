@@ -14,7 +14,7 @@ const childRoutes: Routes = [
 
     { path: '',  component: InicioComponent, },
     // { path: 'portafolio/:slug', component: GraficoComponent },
-    { path: 'portafolio/category/:id', component: ByCategoryComponent },
+    { path: 'portafolio/category/:slug', component: ByCategoryComponent },
     { path: 'portafolio-movil', component: FoliomovilComponent },
     { path: 'acerca-de',  component: AboutComponent, },
     { path: 'soluciones-web',  component: SolucionesWebComponent, },

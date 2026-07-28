@@ -61,12 +61,12 @@ export class InicioComponent implements OnInit {
   username: FormControl<any>;
   ngOnInit(): void {
     window.scrollTo(0,0);
-    this.homeService.home().subscribe((resp:any)=>{
-      // console.log(resp);
-      this.CATEGORIES = resp.categories;
-      this.COURSES_HOME = resp.courses_home.data;
-      this.group_courses_categories = resp.group_courses_categories;
-    })
+    // this.homeService.home().subscribe((resp:any)=>{
+    //   // console.log(resp);
+    //   this.CATEGORIES = resp.categories;
+    //   this.COURSES_HOME = resp.courses_home.data;
+    //   this.group_courses_categories = resp.group_courses_categories;
+    // })
 
     this.user = this.cartService.autService.user;
   }

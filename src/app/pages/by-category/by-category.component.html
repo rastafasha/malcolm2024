@@ -63,12 +63,9 @@
                         <div class="rbt-card-img">
                             <a data-bs-toggle="modal" [attr.data-bs-target]="'#' + portafolio.popup" class="cursor">
                                 <!-- <img src="assets/images/blog/blog-card-02.jpg" alt="Card image">  -->
-                                <div *ngIf="!portafolio.imagen">
-                                    <img src="./assets/images/no-image.jpg"
-                                        alt="Malcolm Cordova Studio desing {{portafolio.title}}">
-                                </div>
-                                <div *ngIf="portafolio.imagen">
-                                    <img src="{{imagenSerUrl}}{{portafolio.imagen}}"
+                               
+                                <div *ngIf="portafolio.img">
+                                    <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
                                         alt="Malcolm Cordova Studio desing {{portafolio.title}}">
                                 </div>
                             </a>
@@ -131,15 +128,12 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-7">
-                            <div *ngIf="!portafolio.imagen">
-                                <img src="./assets/images/no-image.jpg"
+                            
+                            <div *ngIf="portafolio.img">
+                                <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
                                     alt="Malcolm Cordova Studio desing {{portafolio.title}}">
                             </div>
-                            <div *ngIf="portafolio.imagen">
-                                <img src="{{imagenSerUrl}}{{portafolio.imagen}}"
-                                    alt="Malcolm Cordova Studio desing {{portafolio.title}}">
-                            </div>
-                            <div *ngIf="portafolio.youtubeurl != 'null'">
+                            <div *ngIf="portafolio.youtubeurl !== 'null'">
                                 <iframe class="embed-responsive-item shadow" width="100%" height="240"
                                     [src]="getVideoIframe(product.youtubeurl)" frameborder="0"
                                     allow="accelerometer; autoplay;  " allowfullscreen></iframe>

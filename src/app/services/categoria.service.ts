@@ -59,6 +59,22 @@ export class CategoriaService {
         map((resp:{ok: boolean, categoria: Categoria}) => resp.categoria)
         );
   }
+  getCategoryName(name:string) {
+    let headers = new HttpHeaders({"Authorization": "Bearer "+this.authservice.token});
+    const url = `${baseUrl}/categorias/category_by_nombre/${name}`;
+    return this.http.get<any>(url, {headers:headers})
+      .pipe(
+        map((resp:{ok: boolean, categoria: Categoria}) => resp.categoria)
+        );
+  }
+  getCategorySlug(slug:string) {
+    let headers = new HttpHeaders({"Authorization": "Bearer "+this.authservice.token});
+    const url = `${baseUrl}/categorias/category_by_slug/${slug}`;
+    return this.http.get<any>(url, {headers:headers})
+      .pipe(
+        map((resp:{ok: boolean, categoria: Categoria}) => resp.categoria)
+        );
+  }
 
   
 

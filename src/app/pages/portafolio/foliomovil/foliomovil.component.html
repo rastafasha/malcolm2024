@@ -28,7 +28,7 @@
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <ng-container  *ngFor="let category of categorias">
                                         <li class="nav-item lista" role="presentation">
-                                            <button class="nav-link active"[routerLink]="['/portafolio/category/', category.id]" data-toggle="tab"  type="button" role="tab" aria-controls="home" aria-selected="true">{{category.name}}</button>
+                                            <button class="nav-link active"[routerLink]="['/portafolio/category/', category.slug]" data-toggle="tab"  type="button" role="tab" aria-controls="home" aria-selected="true">{{category.name}}</button>
                                         </li>
                                     </ng-container>
                                     
