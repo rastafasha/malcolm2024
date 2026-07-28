@@ -8,7 +8,7 @@ export class Portafolio {
     public  title: string,
     public  description: string,
     public  introhome: string,
-     public categorias: Categoria,
+     public category: Categoria,
      public slug: string,
      public popup: string,
      public youtubeurl: string,

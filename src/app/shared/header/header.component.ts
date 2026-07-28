@@ -178,7 +178,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   getCategories(): void {
     // return this.planesService.carga_info();
-    this.categoryService.getCategoriesActivas().subscribe(
+    this.categoryService.getCategories().subscribe(
       res =>{
         this.categorias = res;
         error => this.error = error

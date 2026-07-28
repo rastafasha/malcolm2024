@@ -74,6 +74,13 @@ export class PortafolioService {
         map((resp:{ok: boolean, portafolios: Portafolio}) => resp.portafolios)
         );
   }
+  getPostByCategoryName(nombre: string) {
+    const url = `${baseUrl}/portafolio/category/${nombre}`;
+    return this.http.get<any>(url)
+      .pipe(
+        map((resp:{ok: boolean, portafolios: Portafolio}) => resp.portafolios)
+        );
+  }
   getportafoliosWithCategory(portafolios: Portafolio) {
     const url = `${baseUrl}/portafolio/showcategory/${portafolios}`;
     return this.http.get<any>(url)
