@@ -1,6 +1,6 @@
 import { environment } from "src/environments/environment";
 import { Categoria } from './categoria';
-const base_url = environment.apiUrlMedia;
+const base_url = environment.mediaUrlRemoto;
 export class Endesarrollo {
 
   constructor(

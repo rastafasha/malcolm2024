@@ -92,11 +92,11 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-7">
-                        <div *ngIf="!portafolio.imagen">
+                        <div *ngIf="!portafolio.img">
                             <img src="./assets/images/no-image.jpg" alt="Malcolm Cordova Studio desing {{portafolio.title}}">
                         </div>
-                        <div *ngIf="portafolio.imagen">
-                            <img src="{{imagenSerUrl}}{{portafolio.imagen}}"  alt="Malcolm Cordova Studio desing {{portafolio.title}}">
+                        <div *ngIf="portafolio.img">
+                            <img src="{{imagenSerUrl}}{{portafolio.img}}"  alt="Malcolm Cordova Studio desing {{portafolio.title}}">
                         </div>
                         <div *ngIf="portafolio.youtubeurl != 'null'">
                             <iframe class="embed-responsive-item shadow" width="100%" height="240" [src]="getVideoIframe(product.youtubeurl)" frameborder="0" allow="accelerometer; autoplay;  " allowfullscreen></iframe>

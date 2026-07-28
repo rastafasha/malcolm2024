@@ -17,7 +17,7 @@ export class GraficoComponent implements OnInit {
   editorContent: any;
   p: Number = 1;
   count: Number = 8;
-  imagenSerUrl = environment.apiUrlMedia;
+  imagenSerUrl = environment.mediaUrlRemoto;
 
   constructor(private portafolioService:PortafolioService ,
     private router: Router,) {}

@@ -25,7 +25,7 @@ export class ByCategoryComponent implements OnInit {
   slug: any=null;
   youtubeurl: any=null;
   error: string;
-  imagenSerUrl = environment.apiUrlMedia;
+  imagenSerUrl = environment.mediaUrlRemoto;
   selectedOption:number = 1;
 
   constructor(

@@ -17,7 +17,7 @@ export class BlogDetailComponent implements OnInit {
   slug:any;
   id: number;
 
-  imagenSerUrl = environment.apiUrlMedia;
+  imagenSerUrl = environment.mediaUrlRemoto;
   constructor(
     private activatedRoute: ActivatedRoute,
     private postService: BlogService,

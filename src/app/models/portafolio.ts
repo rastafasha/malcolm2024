@@ -1,6 +1,6 @@
 import { environment } from "src/environments/environment";
 import { Categoria } from './categoria';
-const base_url = environment.apiUrlMedia;
+const base_url = environment.mediaUrlRemoto;
 export class Portafolio {
 
   constructor(
@@ -16,18 +16,18 @@ export class Portafolio {
      public createdAt: Date,
      public updatedAt: Date,
      public status?: 'PUBLISHED' | 'PENDING' | 'REJECTED',
-     public imagen?: string,
+     public img?: string,
      public user_id?: string,
   ){}
 
   get imagenUrl(){
 
-    if(!this.imagen){
+    if(!this.img){
       return `${base_url}/portafolios/no-image.jpg`;
-    } else if(this.imagen.includes('https')){
-      return this.imagen;
-    } else if(this.imagen){
-      return `${base_url}/${this.imagen}`;
+    } else if(this.img.includes('https')){
+      return this.img;
+    } else if(this.img){
+      return `${base_url}/${this.img}`;
     }else {
       return `${base_url}/no-image.jpg`;
       // return `./assets/img/no-image.jpg`;

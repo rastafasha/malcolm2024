@@ -26,7 +26,7 @@ export class BlogComponent implements OnInit {
   destacados: any;
   slug: any=null;
   error: string;
-  imagenSerUrl = environment.apiUrlMedia;
+  imagenSerUrl = environment.mediaUrlRemoto;
   selectedOption:number = 1;
 
   constructor(

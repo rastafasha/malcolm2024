@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   categorias: any= [];
   postrecientes: any= Portafolio;
-  imagenSerUrl = environment.apiUrlMedia;
+  imagenSerUrl = environment.mediaUrlRemoto;
   
   langs: string[] = [];
   public activeLang = 'es';
