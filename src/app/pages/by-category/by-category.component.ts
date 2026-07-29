@@ -32,7 +32,7 @@ export class ByCategoryComponent implements OnInit, OnDestroy {
   selectedOption:number = 1;
   currentStep = 1;
   private routeSub!: Subscription;
-  isLoading=false;
+  isLoading:boolean = false;
 
   constructor(
     private portafolioService: PortafolioService,
@@ -83,9 +83,9 @@ export class ByCategoryComponent implements OnInit, OnDestroy {
   getPosts(): void {
     this.portafolioService.getPostByCategory(this.id).subscribe(
       (resp:any) =>{
-        this.isLoading =true
+        this.isLoading =true;
         this.portafolios = resp;
-        this.isLoading =false
+        this.isLoading =false;
         error => this.error = error
         // console.log(this.portafolios);
       }
