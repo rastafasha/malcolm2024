@@ -36,20 +36,13 @@
                     <ul class="submenu " >
                         <ng-container  *ngFor="let category of categorias">
                             <li class="position-static">
-                                <a [routerLink]="['/portafolio/category/', category.id]">{{category.name}}</a>
+                                <a [routerLink]="['/portafolio/category/', category.slug]">{{category.name}}</a>
                             </li>
                         </ng-container>
                     </ul>
                 </li>
                 
                 <li><a routerLink="/soluciones-web">Soluciones Web</a></li>
-                <!-- <li class="position-static">
-                    <a routerLink="/store">Tienda</a>
-                </li>
-                <li class="position-static ">
-                    <a routerLink="/tienda-guest/listado-de-cursos">Courses </a>
-                    
-                </li> -->
                 <li class="position-static "> <a routerLink="/acerca-de">Acerca de</a></li>
                 <li class="position-static "> <a routerLink="/blog">Blog </a></li>
                 <li class="position-static">

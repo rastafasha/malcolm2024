@@ -13,7 +13,6 @@ import { FoliomovilComponent } from './portafolio/foliomovil/foliomovil.componen
 const childRoutes: Routes = [
 
     { path: '',  component: InicioComponent, },
-    // { path: 'portafolio/:slug', component: GraficoComponent },
     { path: 'portafolio/category/:slug', component: ByCategoryComponent },
     { path: 'portafolio-movil', component: FoliomovilComponent },
     { path: 'acerca-de',  component: AboutComponent, },
