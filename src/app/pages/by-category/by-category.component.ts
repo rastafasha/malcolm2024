@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Categoria } from 'src/app/models/categoria';
 import { Portafolio } from 'src/app/models/portafolio';
 import { CategoriaService } from 'src/app/services/categoria.service';
@@ -17,7 +18,7 @@ declare function HOMEINIT([]):any;
     styleUrls: ['./by-category.component.css'],
     standalone: false
 })
-export class ByCategoryComponent implements OnInit {
+export class ByCategoryComponent implements OnInit, OnDestroy {
 
   categorias: any =[];
   categoria: any;
@@ -29,6 +30,9 @@ export class ByCategoryComponent implements OnInit {
   id: string;
   imagenSerUrl = environment.mediaUrlRemoto;
   selectedOption:number = 1;
+  currentStep = 1;
+  private routeSub!: Subscription;
+  isLoading=false;
 
   constructor(
     private portafolioService: PortafolioService,
@@ -45,25 +49,43 @@ export class ByCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.scrollTo(0, 0);
-    this.closeMenu();
-    const slug = this.activatedRoute.snapshot.paramMap.get('slug');
-     this.slug = slug;
-    this.categoryService.getCategorySlug(this.slug).subscribe(
-      res => {
-       this.categoria = res;
-       this.id = res._id;
-       this.getPosts();
+    // Escucha activamente cualquier cambio en los parámetros de la URL
+    this.routeSub = this.activatedRoute.paramMap.subscribe(params => {
+      // 1. Ejecutar las acciones visuales iniciales
+      window.scrollTo(0, 0);
+      this.closeMenu();
+
+      // 2. Capturar el nuevo slug de forma dinámica
+      this.slug = params.get('slug');
+
+      // 3. Hacer la petición al servicio con el nuevo slug
+      if (this.slug) {
+        this.categoryService.getCategorySlug(this.slug).subscribe({
+          next: (res) => {
+            this.categoria = res;
+            this.id = res._id;
+            this.getPosts(); // Carga las publicaciones de la nueva categoría
+          },
+          error: (err) => console.error('Error al cargar la categoría:', err)
+        });
       }
-    );
-    
+    });
+  }
+
+  // Es una buena práctica limpiar las suscripciones activas al salir
+  ngOnDestroy(): void {
+    if (this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
   }
 
 
   getPosts(): void {
     this.portafolioService.getPostByCategory(this.id).subscribe(
       (resp:any) =>{
+        this.isLoading =true
         this.portafolios = resp;
+        this.isLoading =false
         error => this.error = error
         // console.log(this.portafolios);
       }
@@ -107,5 +129,15 @@ export class ByCategoryComponent implements OnInit {
 
     return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + youtubeurl);
 }
+
+nextStep() {
+    this.currentStep = 2;
+
+  }
+
+ 
+  prevStep() {
+    this.currentStep = 1;
+  }
 
 }

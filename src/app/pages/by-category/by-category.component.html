@@ -24,24 +24,8 @@
 
                         <div class=" title-wrapper">
                             <h1 class="title mb--0">Portafolio: {{categoria.name}}</h1>
-                            <!-- left-side -->
-                            <div class="contenido ">
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <ng-container *ngFor="let category of categorias">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active"
-                                                [routerLink]="['/portafolio/category/', category.id]" data-toggle="tab"
-                                                type="button" role="tab" aria-controls="home"
-                                                aria-selected="true">{{category.name}}</button>
-                                        </li>
-                                    </ng-container>
-
-                                </ul>
-                            </div>
-                            <!-- end left-side -->
+                            
                         </div>
-
-                        <!-- <p class="description">Blog that help beginner designers become true unicorns. </p> -->
                     </div>
                 </div>
             </div>
@@ -55,15 +39,14 @@
     <div class="container">
         <!-- Start Card Area -->
         <div class="row">
-            <div class="col-lg-10 offset-lg-1 mt_dec--30">
+            <app-loading *ngIf="isLoading"></app-loading>
+            <div class="col-lg-10 offset-lg-1 mt_dec--30" *ngIf="!isLoading">
                 <ng-container *ngFor="let portafolio of portafolios">
 
                     <!-- Start Single Card  -->
                     <div class="rbt-card card-list variation-02 rbt-hover mt--30">
                         <div class="rbt-card-img">
                             <a data-bs-toggle="modal" [attr.data-bs-target]="'#' + portafolio.popup" class="cursor">
-                                <!-- <img src="assets/images/blog/blog-card-02.jpg" alt="Card image">  -->
-
                                 <div *ngIf="portafolio.img">
                                     <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
                                         alt="Malcolm Cordova Studio desing {{portafolio.title}}">
@@ -102,12 +85,7 @@
 
 
 
-
-
-<!-- <app-modalgrafico></app-modalgrafico> -->
-
-
-
+<!-- modal -->
 <div *ngFor="let portafolio of portafolios; let i = index">
     <div class="modal fade" id="{{portafolio.popup}}" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -128,16 +106,47 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-7">
+                            <!-- Step Indicator -->
+                            <div class="step-indicator m-t-20 m-b-20">
+                                <div class="step" *ngIf="portafolio.youtubeurl "
+                                    [ngClass]="{'active': currentStep >= 1, 'completed': currentStep > 1}">
+                                    <span class="step-number">1</span>
+                                    <span class="step-label">Imagen </span>
+                                </div>
+                                <div class="step-line" *ngIf="portafolio.youtubeurl "></div>
+                                <div class="step" *ngIf="portafolio.youtubeurl " [ngClass]="{'active': currentStep >= 2}">
+                                    <span class="step-number">2</span>
+                                    <span class="step-label">Video</span>
+                                </div>
 
-                            <div *ngIf="portafolio.img">
-                                <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
-                                    alt="Malcolm Cordova Studio desing {{portafolio.title}}">
                             </div>
-                            <div *ngIf="portafolio.youtubeurl !== 'null'">
-                                <iframe [src]="videoData.youtubeurl | safeUrl" width="100%" height="500" frameborder="0"
-                                    allowfullscreen>
+                            <div *ngIf="currentStep === 1">
+                                <div *ngIf="portafolio.img">
+                                    <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
+                                        alt="Malcolm Cordova Studio desing {{portafolio.title}}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-4" *ngIf="portafolio.youtubeurl ">
+                                        <button class="btn btn-success waves-effect waves-light m-r-10 btn-block"
+                                            type="button" (click)="nextStep()">Ver Video</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="currentStep === 2">
+                                <iframe [src]="portafolio.youtubeurl | safeUrl" width="100%" height="400"
+                                    frameborder="0" allowfullscreen>
                                 </iframe>
+                                <div class="row">
+
+
+                                    <div class="col-4">
+                                        <button class="btn btn-success waves-effect waves-light m-r-10 btn-block"
+                                            type="button" (click)="prevStep()">Ver imagen</button>
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -149,4 +158,5 @@
         </div>
     </div>
 </div>
+<!-- modal -->
 <app-footer></app-footer>

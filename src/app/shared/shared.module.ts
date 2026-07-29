@@ -13,6 +13,7 @@ import { HeaderPagesComponent } from './header-pages/header-pages.component';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LoadingComponent } from './loading/loading.component';
 
 // export function cargarTraductor(http:HttpClient){
 //   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -24,7 +25,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         BannerHomeComponent,
         BannerInicioComponent,
         BannerSolucionesComponent,
-        HeaderPagesComponent
+        HeaderPagesComponent,
+        LoadingComponent
     ],
     exports: [
         HeaderComponent,
@@ -33,7 +35,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         BannerHomeComponent,
         BannerInicioComponent,
         BannerSolucionesComponent,
-        HeaderPagesComponent
+        HeaderPagesComponent,
+        LoadingComponent
     ], imports: [
         CommonModule,
         FormsModule,
