@@ -5,6 +5,7 @@ import { EscapeHtmlPipe } from './keep-html.pipe';
 import { ImagenPipe } from './imagen.pipe';
 import { SafePipe } from './safe.pipe';
 import { SafeHtmlPipe } from './safehtml.pipe';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 
 
@@ -14,14 +15,16 @@ import { SafeHtmlPipe } from './safehtml.pipe';
     EscapeHtmlPipe,
     ImagenPipe,
     SafePipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    SafeUrlPipe
   ],
   exports: [
     KeysPipe,
     EscapeHtmlPipe,
     ImagenPipe,
     SafePipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    SafeUrlPipe
   ],
   imports: [
     CommonModule
