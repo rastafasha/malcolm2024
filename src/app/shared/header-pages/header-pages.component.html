@@ -119,7 +119,7 @@
                                     <ng-container  *ngFor="let category of categorias">
                                         <li class="with-megamenu has-menu-child-item position-static">
                                             
-                                            <a [routerLink]="['/portafolio/category/', category.id]">{{category.name}}</a>
+                                            <a [routerLink]="['/portafolio/category/', category.slug]">{{category.name}}</a>
                                         </li>
                                     </ng-container>
                                     
@@ -130,13 +130,6 @@
                             <li><a routerLink="/soluciones-web">{{ 'Soluciones Web'|translate}}</a></li>
                             <li><a routerLink="/acerca-de">{{ 'Acerca de'|translate}}</a></li>
                             <li> <a routerLink="/blog">{{ 'Blog'|translate}} </a></li>
-                            <!-- <li class="with-megamenu has-menu-child-item position-static">
-                                <a routerLink="/store">Tienda</a>
-                            </li>
-                            <li class="with-megamenu has-menu-child-item">
-                                <a routerLink="/tienda-guest/listado-de-cursos">Courses </a>
-                                
-                            </li> -->
                             
                             
                         </ul>
