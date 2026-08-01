@@ -55,6 +55,7 @@
                         </div>
                         <div class="rbt-card-body">
                             <h5 class="rbt-card-title">{{portafolio.title | translateKey }}</h5>
+                            <p [innerHTML]="(portafolio.introhome | translateKey)  | keepHtml"></p>
                             <div class="rbt-card-bottom">
                                 <a class="transparent-button" data-bs-toggle="modal"
                                     [attr.data-bs-target]="'#' + portafolio.popup" class="cursor">+ info<i><svg
