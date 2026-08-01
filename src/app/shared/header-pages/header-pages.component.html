@@ -42,15 +42,15 @@
                             <div class="header-info d-none d-xl-block">
                                 <ul class="social-share-transparent">
                                     <li>
-                                        <a href="https://facebook.com/@malcolmcordova"><i
+                                        <a href="https://facebook.com/malcolmcordova"><i
                                                 class="fab fa-facebook-f"></i></a>
                                     </li>
                                     <li>
-                                        <a href="https://linkedin.com/@malcolmcordova"><i
+                                        <a href="https://linkedin.com/malcolmcordova"><i
                                                 class="fab fa-linkedin-in"></i></a>
                                     </li>
                                     <li>
-                                        <a href="https://instagram.com/@malcolmcordova"><i
+                                        <a href="https://instagram.com/malcolmcordova"><i
                                                 class="fab fa-instagram"></i></a>
                                     </li>
                                 </ul>
@@ -71,7 +71,14 @@
         <div class="container-fluid">
             <div class="mainbar-row rbt-navigation-center align-items-center">
                 <div class="header-left rbt-header-content">
-                    <div class="header-info">
+                    <div class="header-info d-flex ">
+                        <div class="mobile-menu-bar d-block d-xl-none">
+                            <div  (click)="openMenu()">
+                                <button class="hamberger-button rbt-round-btn">
+                                    <i class="feather-menu"></i>
+                                </button>
+                            </div>
+                        </div>
                         <div class="logo">
                             <a href="/">
                                 <img src="./assets/images/logo/logotipo.png" alt="Malcolm Cordova">
@@ -79,8 +86,11 @@
                         </div>
                     </div>
                     <div class="header-info">
-                        <!-- category menu -->
+                        
                     </div>
+                </div>
+                <div class="header-right">
+                    
                 </div>
 
                 <div class="rbt-main-navigation d-none d-xl-block">
@@ -94,13 +104,14 @@
                                     <i class="feather-chevron-down"></i>
                                 </a>
                                 <ul class="submenu">
-  <!-- 🚀 Move the *ngFor loop here so it correctly iterates through your array -->
-  <li class="with-megamenu has-menu-child-item position-static" *ngFor="let category of categorias">
-    <a [routerLink]="['/portafolio/category/', category?.slug]">
-      {{ category?.name | translateKey }}
-    </a>
-  </li>
-</ul>
+                                    <!-- 🚀 Move the *ngFor loop here so it correctly iterates through your array -->
+                                    <li class="with-megamenu has-menu-child-item position-static"
+                                        *ngFor="let category of categorias">
+                                        <a [routerLink]="['/portafolio/category/', category?.slug]">
+                                            {{ category?.name | translateKey }}
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li><a routerLink="/soluciones-web">{{ 'Soluciones Web'|translate}}</a></li>
                             <li><a routerLink="/acerca-de">{{ 'Acerca de'|translate}}</a></li>
@@ -109,20 +120,6 @@
                     </nav>
                 </div>
 
-                <div class="header-right">
-
-                    <!-- Navbar Icons -->
-                    <!-- Start Mobile-Menu-Bar -->
-                    <div class="mobile-menu-bar d-block d-xl-none">
-                        <div class="hamberger" (click)="openMenu()">
-                            <button class="hamberger-button rbt-round-btn">
-                                <i class="feather-menu"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Start Mobile-Menu-Bar -->
-
-                </div>
             </div>
         </div>
     </div>

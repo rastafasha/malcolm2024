@@ -21,8 +21,6 @@ declare function alertSuccess([]):any;
 })
 export class HeaderPagesComponent implements OnInit {
 
-  private cdr = inject(ChangeDetectorRef); 
-
   listCarts: any = [];
   user:any = null;
   totalSum:any = 0;
@@ -48,7 +46,8 @@ export class HeaderPagesComponent implements OnInit {
     private categoryService: CategoriaService,
     public router:Router,
     public tiendaGuestService: TiendaGuestService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private cdr:ChangeDetectorRef
 
   ) { 
     // this.translate.setDefaultLang('es');
@@ -62,10 +61,7 @@ export class HeaderPagesComponent implements OnInit {
     // console.log(this.translate);
   }
 
-  // cambiarLang(lang:string){
-  //   this.translate.use(lang);
-
-  // }
+  
 
   public cambiarLenguaje(lang: string) {
     this.activeLang = lang;
@@ -156,7 +152,6 @@ export class HeaderPagesComponent implements OnInit {
   }
 
   openMenu(){
-
     var menuLateral = document.getElementsByClassName("popup-mobile-menu");
       for (var i = 0; i<menuLateral.length; i++) {
          menuLateral[i].classList.toggle("active");
