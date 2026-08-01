@@ -1,7 +1,8 @@
 <header class="rbt-header rbt-header-10">
     <div class="rbt-sticky-placeholder"></div>
     <!-- Start Header Top  -->
-    <div class="rbt-header-top rbt-header-top-1 header-space-betwween bg-not-transparent bg-color-darker top-expended-activation">
+    <div
+        class="rbt-header-top rbt-header-top-1 header-space-betwween bg-not-transparent bg-color-darker top-expended-activation">
         <div class="container-fluid">
             <div class="top-expended-wrapper">
                 <div class="top-expended-inner rbt-header-sec align-items-center ">
@@ -12,13 +13,19 @@
                                 <ul class="rbt-information-list">
                                     <li class="has-child-menu">
                                         <a style="cursor: pointer;">
-                                             <a *ngIf="!flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')"><span class="menu-item">Español</span></a>
+                                            <a *ngIf="!flag" style="cursor: pointer;"
+                                                [ngClass]="{'active': activeLang == 'es'}"
+                                                (click)="cambiarLenguaje('en')"><span
+                                                    class="menu-item">Español</span></a>
                                         </a>
                                     </li>
                                     <li class="has-child-menu">
                                         <a style="cursor: pointer;">
-                                            <a *ngIf="flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'en'}" (click)="cambiarLenguaje('es')"><span class="menu-item">English</span></a>
-                                            
+                                            <a *ngIf="flag" style="cursor: pointer;"
+                                                [ngClass]="{'active': activeLang == 'en'}"
+                                                (click)="cambiarLenguaje('es')"><span
+                                                    class="menu-item">English</span></a>
+
                                         </a>
                                     </li>
                                     <li>
@@ -29,57 +36,25 @@
                             <!-- End Header Information List  -->
                         </div>
                     </div>
-                    <div class="rbt-header-sec-col rbt-header-center">
-                        <div class="rbt-header-content justify-content-start justify-content-xl-center">
-                            <div class="header-info">
-                                <div class="rbt-header-top-news">
-                                    <div class="inner">
-                                        <!-- <div class="content">
-                                            <span class="rbt-badge variation-02 bg-color-primary color-white radius-round">Hot</span>
-                                            <span class="news-text"><img src="assets/images/icons/hand-emojji.svg" alt="Hand Emojji Images"> Intro price. Get Histudy for Big Sale -95% off.</span>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="rbt-header-sec-col rbt-header-right mt_md--10 mt_sm--10">
                         <div class="rbt-header-content justify-content-start justify-content-lg-end">
                             <div class="header-info d-none d-xl-block">
                                 <ul class="social-share-transparent">
                                     <li>
-                                        <a href="https://facebook.com/@malcolmcordova"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <!-- <li>
-                                        <a href="https://intagram.com/@malcolmcordova"><i class="fab fa-twitter"></i></a>
-                                    </li> -->
-                                    <li>
-                                        <a href="https://linkedin.com/@malcolmcordova"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://facebook.com/@malcolmcordova"><i
+                                                class="fab fa-facebook-f"></i></a>
                                     </li>
                                     <li>
-                                        <a href="https://instagram.com/@malcolmcordova"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://linkedin.com/@malcolmcordova"><i
+                                                class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://instagram.com/@malcolmcordova"><i
+                                                class="fab fa-instagram"></i></a>
                                     </li>
                                 </ul>
                             </div>
-  
-                            <!-- <div class="rbt-separator d-none d-xl-block"></div>
-  
-                            <div class="header-info">
-                                <ul class="rbt-dropdown-menu switcher-language">
-                                    <li class="has-child-menu">
-                                        <a style="cursor: pointer;">
-                                            <a *ngIf="!flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')"><span class="menu-item">Español</span></a>
-                                        </a>
-                                    </li>
-                                    <li class="has-child-menu">
-                                        <a style="cursor: pointer;">
-                                            <a *ngIf="flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'en'}" (click)="cambiarLenguaje('es')"><span class="menu-item">English</span></a>
-                
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div> -->
-  
                         </div>
                     </div>
                 </div>
@@ -107,50 +82,36 @@
                         <!-- category menu -->
                     </div>
                 </div>
-  
+
                 <div class="rbt-main-navigation d-none d-xl-block">
                     <nav class="mainmenu-nav">
                         <ul class="mainmenu">
-                            
                             <li class="with-megamenu has-menu-child-item position-static">
                                 <a routerLink="/">{{ 'Inicio'|translate}}</a>
                             </li>
-                            
                             <li class="has-dropdown has-menu-child-item">
                                 <a href="#" onclick="return false;">{{ 'Portafolio'|translate}}
                                     <i class="feather-chevron-down"></i>
                                 </a>
                                 <ul class="submenu">
-                                    <ng-container  *ngFor="let category of categorias">
-                                        <li class="with-megamenu has-menu-child-item position-static">
-                                            <a [routerLink]="['/portafolio/category/', category.slug]">{{category.name}}</a>
-                                        </li>
-                                    </ng-container>
-                                    
-                                </ul>
-
+  <!-- 🚀 Move the *ngFor loop here so it correctly iterates through your array -->
+  <li class="with-megamenu has-menu-child-item position-static" *ngFor="let category of categorias">
+    <a [routerLink]="['/portafolio/category/', category?.slug]">
+      {{ category?.name | translateKey }}
+    </a>
+  </li>
+</ul>
                             </li>
-                            
                             <li><a routerLink="/soluciones-web">{{ 'Soluciones Web'|translate}}</a></li>
                             <li><a routerLink="/acerca-de">{{ 'Acerca de'|translate}}</a></li>
                             <!-- <li> <a routerLink="/blog">{{ 'Blog'|translate}} </a></li> -->
-                            
-                            
                         </ul>
                     </nav>
                 </div>
-  
+
                 <div class="header-right">
-  
+
                     <!-- Navbar Icons -->
-                    
-  
-                    <div class="rbt-btn-wrapper d-none d-xl-block">
-                        <!-- <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none" routerLink="/tienda-guest/listado-de-cursos">
-                            <span data-text="Cursos">Cursos</span>
-                        </a> -->
-                    </div>
-  
                     <!-- Start Mobile-Menu-Bar -->
                     <div class="mobile-menu-bar d-block d-xl-none">
                         <div class="hamberger" (click)="openMenu()">
@@ -160,7 +121,7 @@
                         </div>
                     </div>
                     <!-- Start Mobile-Menu-Bar -->
-  
+
                 </div>
             </div>
         </div>
@@ -171,4 +132,4 @@
 <!-- Mobile Menu Section -->
 <app-mobile-menu></app-mobile-menu>
 
-  <a class="close_side_menu" href="javascript:void(0);"></a>
+<a class="close_side_menu" href="javascript:void(0);"></a>

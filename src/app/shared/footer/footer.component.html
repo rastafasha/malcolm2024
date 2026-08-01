@@ -29,14 +29,14 @@
                     <div class="footer-widget">
                         <h5 class="ft-title">{{ 'Portafolio'|translate}}</h5>
                         <app-loading *ngIf="isLoading"></app-loading>
-                        <ul class="ft-link" *ngIf="!isLoading">
-                            <ng-container  *ngFor="let category of categorias">
-                                <li >
-                                    
-                                    <a [routerLink]="['/portafolio/category/', category.slug]">{{category.name}}</a>
-                                </li>
-                            </ng-container>
+                        <div *ngIf="!isLoading">
+                            <ul class="ft-link"  *ngFor="let category of categorias">
+                            <li >
+                                <a [routerLink]="['/portafolio/category/', category.slug]">{{category.name| translateKey}}</a>
+                            </li>
                         </ul>
+                        </div>
+                        
                     </div>
                 </div>
 <!-- 

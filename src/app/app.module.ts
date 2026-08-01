@@ -24,7 +24,9 @@ export function cargarTraductor(http:HttpClient){
 @NgModule({ declarations: [
         AppComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
         AppRoutingModule,
         SharedModule,
         BrowserAnimationsModule,

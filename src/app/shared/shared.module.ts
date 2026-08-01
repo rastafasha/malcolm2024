@@ -14,6 +14,7 @@ import { HeaderPagesComponent } from './header-pages/header-pages.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoadingComponent } from './loading/loading.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 // export function cargarTraductor(http:HttpClient){
 //   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -43,6 +44,7 @@ import { LoadingComponent } from './loading/loading.component';
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule,
+        PipesModule,
         TranslateModule],
          providers: [
             provideHttpClient(withInterceptorsFromDi())

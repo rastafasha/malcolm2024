@@ -10,7 +10,7 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 })
 export class FooterComponent implements OnInit {
 
-  categorias: any =null;
+  categorias: Categoria =null;
   error: any =null;
   isLoading = false;
   year: number = new Date().getFullYear();

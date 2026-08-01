@@ -18,13 +18,13 @@
                             <li>
                                 <div class="icon-right"><i class="feather-chevron-right"></i></div>
                             </li>
-                            <li class="rbt-breadcrumb-item active">Portafolio: {{categoria.name}}</li>
+                            <li class="rbt-breadcrumb-item active">Portafolio: {{categoria?.name| translateKey}}</li>
                         </ul>
                         <!-- End Breadcrumb Area  -->
 
                         <div class=" title-wrapper">
-                            <h1 class="title mb--0">Portafolio: {{categoria.name}}</h1>
-                            
+                            <h1 class="title mb--0">Portafolio: {{categoria?.name | translateKey}}</h1>
+
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,7 @@
                             </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title">{{portafolio.title}}
-                            </h5>
+                            <h5 class="rbt-card-title">{{portafolio.title | translateKey }}</h5>
                             <div class="rbt-card-bottom">
                                 <a class="transparent-button" data-bs-toggle="modal"
                                     [attr.data-bs-target]="'#' + portafolio.popup" class="cursor">+ info<i><svg
@@ -99,10 +98,17 @@
 
                     <div class="row dflex">
                         <div class="col-xs-12 col-sm-5">
-                            <h3>{{portafolio.title}}</h3>
-                            <p [innerHTML]="portafolio.description | keepHtml"></p>
+                            <!-- 1. Título dinámico usando corchetes -->
+                            <h3>{{ portafolio.title| translateKey  }}</h3>
+
+                            <!-- 2. Descripción bilingüe combinada con tu pipe de HTML seguro -->
+                            <p [innerHTML]="(portafolio.description | translateKey)  | keepHtml"></p>
+
                             <div *ngIf="portafolio.url != 'null'">
-                                <a [href]="portafolio.url" target="_blank" class="btn btn-outline-primary">visitar</a>
+                                <a [href]="portafolio.url" target="_blank" class="btn btn-outline-primary">
+                                    <!-- 3. Botón traducido según el idioma -->
+                                    {{ currentLang === 'es' ? 'visitar' : 'visit' }}
+                                </a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-7">
@@ -114,7 +120,8 @@
                                     <span class="step-label">Imagen </span>
                                 </div>
                                 <div class="step-line" *ngIf="portafolio.youtubeurl "></div>
-                                <div class="step" *ngIf="portafolio.youtubeurl " [ngClass]="{'active': currentStep >= 2}">
+                                <div class="step" *ngIf="portafolio.youtubeurl "
+                                    [ngClass]="{'active': currentStep >= 2}">
                                     <span class="step-number">2</span>
                                     <span class="step-label">Video</span>
                                 </div>
@@ -128,7 +135,7 @@
                                 <div class="row">
                                     <div class="col-4" *ngIf="portafolio.youtubeurl ">
                                         <button class="btn btn-success waves-effect waves-light m-r-10 btn-block"
-                                            type="button" (click)="nextStep()">Ver Video</button>
+                                            type="button" (click)="nextStep()">{{'Ver Video'|translate}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +148,7 @@
 
                                     <div class="col-4">
                                         <button class="btn btn-success waves-effect waves-light m-r-10 btn-block"
-                                            type="button" (click)="prevStep()">Ver imagen</button>
+                                            type="button" (click)="prevStep()">{{'Ver imagen'|translate}}</button>
                                     </div>
                                 </div>
                             </div>

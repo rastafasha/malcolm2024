@@ -1,24 +1,29 @@
 import { environment } from "src/environments/environment";
 import { Categoria } from './categoria';
 const base_url = environment.mediaUrlRemoto;
-export class Portafolio {
+// Define la estructura bilingüe para tus textos
+export interface I18nString {
+  es: string;
+  en: string;
+}
 
+export class Portafolio {
   constructor(
-    public id: number,
-    public  title: string,
-    public  description: string,
-    public  introhome: string,
-     public category: Categoria,
-     public slug: string,
-     public popup: string,
-     public youtubeurl: string,
-     public isFeatured: boolean,
-     public createdAt: Date,
-     public updatedAt: Date,
-     public status?: 'PUBLISHED' | 'PENDING' | 'REJECTED',
-     
-     public user_id?: string,
-  ){}
+    public _id: string,
+    public title: I18nString,        // 👈 Actualizado a Objeto Bilingüe
+    public description: I18nString,  // 👈 Actualizado a Objeto Bilingüe
+    public introhome: I18nString,    // 👈 Actualizado a Objeto Bilingüe
+    public category: Categoria,
+    public slug: string,
+    public popup: string,
+    public youtubeurl: string,
+    public isFeatured: boolean,
+    public createdAt: Date,
+    public updatedAt: Date,
+    public status?: 'PUBLISHED' | 'PENDING' | 'REJECTED',
+    public user_id?: string,
+  ) {}
+
 
   img: string;
     get imagenUrl() {
@@ -34,7 +39,6 @@ export class Portafolio {
         }
 
     }
-  
 
 
 }

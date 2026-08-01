@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, fromEvent } from 'rxjs';
 import { Categoria } from 'src/app/models/categoria';
@@ -21,7 +21,7 @@ declare function alertSuccess([]):any;
 })
 export class HeaderPagesComponent implements OnInit {
 
-  
+  private cdr = inject(ChangeDetectorRef); 
 
   listCarts: any = [];
   user:any = null;
@@ -32,13 +32,12 @@ export class HeaderPagesComponent implements OnInit {
   listCourses: any = [];
   categories:any = [];
 
-  categorias: any= Categoria;
+  public categorias: Categoria;
   postrecientes: any= Portafolio;
   
   langs: string[] = [];
   public activeLang = 'es';
-
-  flag = false;
+  public flag = false;
 
   error: string;
 
@@ -68,10 +67,15 @@ export class HeaderPagesComponent implements OnInit {
 
   // }
 
-  public cambiarLenguaje(lang) {
+  public cambiarLenguaje(lang: string) {
     this.activeLang = lang;
+    
+    // 1. Ejecutamos el cambio de idioma tradicional
     this.translate.use(lang);
     this.flag = !this.flag;
+
+    // 2. 🚀 LA MAGIA: Forzamos a Angular a re-evaluar los pipes en el HTML inmediatamente
+    this.cdr.markForCheck(); 
   }
 
   ngOnInit(): void {

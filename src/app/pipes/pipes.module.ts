@@ -6,6 +6,7 @@ import { ImagenPipe } from './imagen.pipe';
 import { SafePipe } from './safe.pipe';
 import { SafeHtmlPipe } from './safehtml.pipe';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { TranslateKeyPipe } from './translateKey.pipe';
 
 
 
@@ -16,7 +17,8 @@ import { SafeUrlPipe } from './safe-url.pipe';
     ImagenPipe,
     SafePipe,
     SafeHtmlPipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    TranslateKeyPipe
   ],
   exports: [
     KeysPipe,
@@ -24,7 +26,8 @@ import { SafeUrlPipe } from './safe-url.pipe';
     ImagenPipe,
     SafePipe,
     SafeHtmlPipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    TranslateKeyPipe
   ],
   imports: [
     CommonModule
