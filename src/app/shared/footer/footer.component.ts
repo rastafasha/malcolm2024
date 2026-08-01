@@ -12,6 +12,8 @@ export class FooterComponent implements OnInit {
 
   categorias: any =null;
   error: any =null;
+  isLoading = false;
+  year: number = new Date().getFullYear();
   constructor(
     private categoryService: CategoriaService,
   ) { }
@@ -23,7 +25,9 @@ export class FooterComponent implements OnInit {
   getCategories(): void {
     this.categoryService.getCategoriesActivas().subscribe(
       res =>{
+        this.isLoading = true;
         this.categorias = res;
+        this.isLoading = false;
         error => this.error = error
         // console.log(this.categorias);
       }

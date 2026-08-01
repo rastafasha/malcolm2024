@@ -10,12 +10,17 @@
                             <!-- Start Header Information List  -->
                             <div class="header-info">
                                 <ul class="rbt-information-list">
-                                    <!-- <li>
-                                        <a href="#"><i class="fab fa-instagram"></i>100k <span class="d-none d-xxl-block">Followers</span></a>
+                                    <li class="has-child-menu">
+                                        <a style="cursor: pointer;">
+                                             <a *ngIf="!flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')"><span class="menu-item">Español</span></a>
+                                        </a>
                                     </li>
-                                    <li>
-                                        <a href="#"><i class="fab fa-facebook-square"></i>500k <span class="d-none d-xxl-block">Followers</span></a>
-                                    </li> -->
+                                    <li class="has-child-menu">
+                                        <a style="cursor: pointer;">
+                                            <a *ngIf="flag" style="cursor: pointer;" [ngClass]="{'active': activeLang == 'en'}" (click)="cambiarLenguaje('es')"><span class="menu-item">English</span></a>
+                                            
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="#"><i class="feather-phone"></i>+58-424-187.43.70</a>
                                     </li>
@@ -128,7 +133,7 @@
                             
                             <li><a routerLink="/soluciones-web">{{ 'Soluciones Web'|translate}}</a></li>
                             <li><a routerLink="/acerca-de">{{ 'Acerca de'|translate}}</a></li>
-                            <li> <a routerLink="/blog">{{ 'Blog'|translate}} </a></li>
+                            <!-- <li> <a routerLink="/blog">{{ 'Blog'|translate}} </a></li> -->
                             
                             
                         </ul>
