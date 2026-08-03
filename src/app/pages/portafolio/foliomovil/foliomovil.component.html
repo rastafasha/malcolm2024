@@ -13,28 +13,31 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <!-- Start Breadcrumb Area  -->
-                        <ul class="page-list">
+                        <!-- <ul class="page-list">
                             <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
                             <li>
                                 <div class="icon-right"><i class="feather-chevron-right"></i></div>
                             </li>
-                            <!-- <li class="rbt-breadcrumb-item active">Portafolio: {{categoria.name}}</li> -->
-                        </ul>
+                            <li class="rbt-breadcrumb-item active">Portafolio: {{categoria.name}}</li>
+                        </ul> -->
                         <!-- End Breadcrumb Area  -->
 
                         <div class=" title-wrapper">
                             <!-- <h1 class="title mb--0">Portafolio: {{categoria.name}}</h1> -->
                             <div class="contenido ">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <ng-container  *ngFor="let category of categorias">
+                                    <ng-container *ngFor="let category of categorias">
                                         <li class="nav-item lista" role="presentation">
-                                            <button class="nav-link active"[routerLink]="['/portafolio/category/', category.slug]" data-toggle="tab"  type="button" role="tab" aria-controls="home" aria-selected="true">{{category.name}}</button>
+                                            <button class="nav-link active"
+                                                [routerLink]="['/portafolio/category/', category.slug]"
+                                                data-toggle="tab" type="button" role="tab" aria-controls="home"
+                                                aria-selected="true">{{categoria?.name| translateKey}}</button>
                                         </li>
                                     </ng-container>
-                                    
+
                                 </ul>
                             </div>
-                            
+
                         </div>
 
                         <!-- <p class="description">Blog that help beginner designers become true unicorns. </p> -->
@@ -49,10 +52,10 @@
 <!-- Start Card Style -->
 <div class="rbt-blog-area rbt-section-overlayping-top rbt-section-gapBottom">
     <div class="container">
-        
+
         <div class="container mt-3 mb-20">
             <!-- left-side -->
-            
+
             <!-- end left-side -->
         </div>
     </div>
@@ -74,43 +77,83 @@
 
 
 <div *ngFor="let portafolio of portafolios; let i = index">
-    <div class="modal fade" id="{{portafolio.popup}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="{{portafolio.popup}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                
-                <div class="row dflex">
-                    <div class="col-xs-12 col-sm-5">
-                        <h3>{{portafolio.title}}</h3>
-                        <p [innerHTML]="portafolio.description | keepHtml"></p>
-                        <div *ngIf="portafolio.url != 'null'">
-                            <a [href]="portafolio.url" target="_blank" class="btn btn-outline-primary">visitar</a>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row dflex">
+                        <div class="col-xs-12 col-sm-5">
+                            <!-- 1. Título dinámico usando corchetes -->
+                            <h3>{{ portafolio.title| translateKey }}</h3>
+
+                            <!-- 2. Descripción bilingüe combinada con tu pipe de HTML seguro -->
+                            <p [innerHTML]="(portafolio.description | translateKey)  | keepHtml"></p>
+
+                            <div *ngIf="portafolio.url != 'null'">
+                                <a [href]="portafolio.url" target="_blank" class="btn btn-outline-primary">
+                                    <!-- 3. Botón traducido según el idioma -->
+                                    {{ currentLang === 'es' ? 'visitar' : 'visit' }}
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-7">
-                        <div *ngIf="!portafolio.img">
-                            <img src="./assets/images/no-image.jpg" alt="Malcolm Cordova Studio desing {{portafolio.title}}">
-                        </div>
-                        <div *ngIf="portafolio.img">
-                            <img src="{{imagenSerUrl}}{{portafolio.img}}"  alt="Malcolm Cordova Studio desing {{portafolio.title}}">
-                        </div>
-                        <div *ngIf="portafolio.youtubeurl != 'null'">
-                            <iframe class="embed-responsive-item shadow" width="100%" height="240" [src]="getVideoIframe(product.youtubeurl)" frameborder="0" allow="accelerometer; autoplay;  " allowfullscreen></iframe>
+                        <div class="col-xs-12 col-sm-7">
+                            <!-- Step Indicator -->
+                            <div class="step-indicator m-t-20 m-b-20">
+                                <div class="step" *ngIf="portafolio.youtubeurl "
+                                    [ngClass]="{'active': currentStep >= 1, 'completed': currentStep > 1}">
+                                    <span class="step-number">1</span>
+                                    <span class="step-label">Imagen </span>
+                                </div>
+                                <div class="step-line" *ngIf="portafolio.youtubeurl "></div>
+                                <div class="step" *ngIf="portafolio.youtubeurl "
+                                    [ngClass]="{'active': currentStep >= 2}">
+                                    <span class="step-number">2</span>
+                                    <span class="step-label">Video</span>
+                                </div>
+
+                            </div>
+                            <div *ngIf="currentStep === 1">
+                                <div *ngIf="portafolio.img">
+                                    <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
+                                        alt="Malcolm Cordova Studio desing {{portafolio.title | translateKey}}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-4" *ngIf="portafolio.youtubeurl ">
+                                        <button class="btn btn-success waves-effect waves-light m-r-10 btn-block"
+                                            type="button" (click)="nextStep()">{{'Ver Video'|translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="currentStep === 2">
+                                <iframe [src]="portafolio.youtubeurl | safeUrl" width="100%" height="400"
+                                    frameborder="0" allowfullscreen>
+                                </iframe>
+                                <div class="row">
+
+
+                                    <div class="col-4">
+                                        <button class="btn btn-success waves-effect waves-light m-r-10 btn-block"
+                                            type="button" (click)="prevStep()">{{'Ver imagen'|translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="modal-footer">
+                <!-- <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save changes</button>
             </div> -->
-          </div>
+            </div>
         </div>
-      </div>
+    </div>
 </div>
 <app-footer></app-footer>
-

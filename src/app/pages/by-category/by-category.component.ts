@@ -6,45 +6,45 @@ import { Categoria } from 'src/app/models/categoria';
 import { Portafolio } from 'src/app/models/portafolio';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { PortafolioService } from 'src/app/services/portafolio.service';
-import {environment} from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 //activacion y uso de jquery, con la adaptacion del archivo main.js
-declare var $:any;
-declare function HOMEINIT([]):any;
+declare var $: any;
+declare function HOMEINIT([]): any;
 //activacion y uso de jquery
 
 @Component({
-    selector: 'app-by-category',
-    templateUrl: './by-category.component.html',
-    styleUrls: ['./by-category.component.css'],
-    standalone: false
+  selector: 'app-by-category',
+  templateUrl: './by-category.component.html',
+  styleUrls: ['./by-category.component.css'],
+  standalone: false
 })
 export class ByCategoryComponent implements OnInit, OnDestroy {
 
-  categorias: any =[];
+  categorias: any = [];
   categoria: any;
-  portafolios: any=[];
-  slug: any=null;
-  name: any=null;
-  youtubeurl: any=null;
+  portafolios: any = [];
+  slug: any = null;
+  name: any = null;
+  youtubeurl: any = null;
   error: string;
   id: string;
   imagenSerUrl = environment.mediaUrlRemoto;
-  selectedOption:number = 1;
+  selectedOption: number = 1;
   currentStep = 1;
   private routeSub!: Subscription;
-  isLoading:boolean = false;
+  isLoading: boolean = false;
 
   constructor(
     private portafolioService: PortafolioService,
     private categoryService: CategoriaService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public sanitizer:DomSanitizer
-  ) { 
-     //activacion y uso de jquery
-     setTimeout(()=>{
+    public sanitizer: DomSanitizer
+  ) {
+    //activacion y uso de jquery
+    setTimeout(() => {
       HOMEINIT($);
-    },50);
+    }, 50);
     //activacion y uso de jquery
   }
 
@@ -82,60 +82,60 @@ export class ByCategoryComponent implements OnInit, OnDestroy {
 
   getPosts(): void {
     this.portafolioService.getPostByCategory(this.id).subscribe(
-      (resp:any) =>{
-        this.isLoading =true;
+      (resp: any) => {
+        this.isLoading = true;
         this.portafolios = resp;
-        this.isLoading =false;
+        this.isLoading = false;
         error => this.error = error
         // console.log(this.portafolios);
       }
     );
   }
 
-  selectedPost(slug: Portafolio){
+  selectedPost(slug: Portafolio) {
     this.router.navigate(['/portafolio/', slug])
   }
 
-  closeMenu(){
+  closeMenu() {
 
     var menuLateral = document.getElementsByClassName("popup-mobile-menu");
-      for (var i = 0; i<menuLateral.length; i++) {
-         menuLateral[i].classList.remove("active");
+    for (var i = 0; i < menuLateral.length; i++) {
+      menuLateral[i].classList.remove("active");
 
-      }
+    }
   }
 
-  openModal(){
+  openModal() {
     var myModal = document.getElementById('myModal')
     var myInput = document.getElementById('myInput')
 
     myModal.addEventListener('shown.bs.modal', function () {
       myInput.focus()
     })
-      console.log('pulsado');
+    console.log('pulsado');
   }
 
-  
+
 
   getVideoIframe(url) {
     let youtubeurl: any[];
     let results: any[];
 
     if (url === null) {
-        return '';
+      return '';
     }
     results = url.match('[\\?&]v=([^&#]*)');
-    youtubeurl   = (results === null) ? url : results[1];
+    youtubeurl = (results === null) ? url : results[1];
 
     return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + youtubeurl);
-}
+  }
 
-nextStep() {
+  nextStep() {
     this.currentStep = 2;
 
   }
 
- 
+
   prevStep() {
     this.currentStep = 1;
   }

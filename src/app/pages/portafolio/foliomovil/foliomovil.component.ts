@@ -6,44 +6,45 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 import { PortafolioService } from 'src/app/services/portafolio.service';
 import { environment } from 'src/environments/environment';
 //activacion y uso de jquery, con la adaptacion del archivo main.js
-declare var $:any;
-declare function HOMEINIT([]):any;
+declare var $: any;
+declare function HOMEINIT([]): any;
 //activacion y uso de jquery
 
 
 @Component({
-    selector: 'app-foliomovil',
-    templateUrl: './foliomovil.component.html',
-    styleUrls: ['./foliomovil.component.css'],
-    standalone: false
+  selector: 'app-foliomovil',
+  templateUrl: './foliomovil.component.html',
+  styleUrls: ['./foliomovil.component.css'],
+  standalone: false
 })
 export class FoliomovilComponent implements OnInit {
 
-  categorias: any =[];
+  categorias: any = [];
   categoria: any;
   category_id: any;
-  portafolios: any=[];
-  slug: any=null;
-  youtubeurl: any=null;
+  portafolios: any = [];
+  slug: any = null;
+  youtubeurl: any = null;
   error: string;
   imagenSerUrl = environment.mediaUrlRemoto;
-  selectedOption:number = 1;
+  selectedOption: number = 1;
+  currentStep = 1;
 
   constructor(
     private portafolioService: PortafolioService,
     private categoryService: CategoriaService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public sanitizer:DomSanitizer
-  ) { 
-     //activacion y uso de jquery
-     setTimeout(()=>{
+    public sanitizer: DomSanitizer
+  ) {
+    //activacion y uso de jquery
+    setTimeout(() => {
       HOMEINIT($);
-    },50);
+    }, 50);
     //activacion y uso de jquery
   }
 
-  
+
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.closeMenu();
@@ -52,19 +53,19 @@ export class FoliomovilComponent implements OnInit {
     this.getCategoriaActivas();
   }
 
-  getCategory(id:any): void {
+  getCategory(id: any): void {
     this.categoryService.getCategory(id).subscribe(
-      (res:any) =>{
+      (res: any) => {
         this.categoria = res;
         // error => this.error = error
         // console.log(this.categoria);
-        this.activatedRoute.params.subscribe( ({id}) => this.getPosts(id));
+        this.activatedRoute.params.subscribe(({ id }) => this.getPosts(id));
       }
     );
   }
   getCategories(): void {
     this.categoryService.getCategories().subscribe(
-      (res:any) =>{
+      (res: any) => {
         this.categorias = res;
         // error => this.error = error
         // console.log(this.categoria);
@@ -75,7 +76,7 @@ export class FoliomovilComponent implements OnInit {
 
   getCategoriaActivas(): void {
     this.categoryService.getCategoriesActivas().subscribe(
-      res =>{
+      res => {
         this.categorias = res;
         error => this.error = error
         // console.log(this.categorias);
@@ -83,9 +84,9 @@ export class FoliomovilComponent implements OnInit {
     );
   }
 
-  getPosts(id:any): void {
+  getPosts(id: any): void {
     this.portafolioService.getPostByCategory(id).subscribe(
-      (resp:any) =>{
+      (resp: any) => {
         this.portafolios = resp;
         error => this.error = error
         // console.log(this.portafolios);
@@ -93,41 +94,51 @@ export class FoliomovilComponent implements OnInit {
     );
   }
 
-  selectedPost(slug: Portafolio){
+  selectedPost(slug: Portafolio) {
     this.router.navigate(['/portafolio/', slug])
   }
 
-  closeMenu(){
+  closeMenu() {
 
     var menuLateral = document.getElementsByClassName("popup-mobile-menu");
-      for (var i = 0; i<menuLateral.length; i++) {
-         menuLateral[i].classList.remove("active");
+    for (var i = 0; i < menuLateral.length; i++) {
+      menuLateral[i].classList.remove("active");
 
-      }
+    }
   }
 
-  openModal(){
+  openModal() {
     var myModal = document.getElementById('myModal')
     var myInput = document.getElementById('myInput')
 
     myModal.addEventListener('shown.bs.modal', function () {
       myInput.focus()
     })
-      console.log('pulsado');
+    console.log('pulsado');
   }
 
-  
+
 
   getVideoIframe(url) {
     let youtubeurl: any[];
     let results: any[];
 
     if (url === null) {
-        return '';
+      return '';
     }
     results = url.match('[\\?&]v=([^&#]*)');
-    youtubeurl   = (results === null) ? url : results[1];
+    youtubeurl = (results === null) ? url : results[1];
 
     return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + youtubeurl);
-}
+  }
+
+  nextStep() {
+    this.currentStep = 2;
+
+  }
+
+
+  prevStep() {
+    this.currentStep = 1;
+  }
 }

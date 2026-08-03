@@ -13,13 +13,13 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <!-- Start Breadcrumb Area  -->
-                        <ul class="page-list">
+                        <!-- <ul class="page-list">
                             <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
                             <li>
                                 <div class="icon-right"><i class="feather-chevron-right"></i></div>
                             </li>
                             <li class="rbt-breadcrumb-item active">Portafolio: {{categoria?.name| translateKey}}</li>
-                        </ul>
+                        </ul> -->
                         <!-- End Breadcrumb Area  -->
 
                         <div class=" title-wrapper">
@@ -64,7 +64,8 @@
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />
                                             </g>
-                                        </svg></i></a>
+                                        </svg></i>
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +93,6 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -131,7 +131,7 @@
                             <div *ngIf="currentStep === 1">
                                 <div *ngIf="portafolio.img">
                                     <img [src]="(portafolio?.img||'') | imagenPipe:'portafolios'"
-                                        alt="Malcolm Cordova Studio desing {{portafolio.title}}">
+                                        alt="Malcolm Cordova Studio desing {{portafolio.title | translateKey}}">
                                 </div>
                                 <div class="row">
                                     <div class="col-4" *ngIf="portafolio.youtubeurl ">
@@ -158,10 +158,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
             </div>
         </div>
     </div>
