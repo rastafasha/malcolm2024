@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { inject } from '@vercel/analytics';
 
 @Component({
     selector: 'app-root',
@@ -6,14 +7,13 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css'],
     standalone: false
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'malcolm2024';
   
-  constructor(
-  ){
-    
+  ngOnInit() {
+    // Se ejecuta una sola vez al cargar la aplicación
+    inject();
   }
-
 
   // get localizacionListo(){
   //   // console.log(this.lugarService.localizacion);
